@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Bot_PlayerTauz
-build_property.ProjectDir = E:\estudo C#\Bot-PlayerTauz\Bot-PlayerTauz\
+build_property.ProjectDir = E:\estudo C#\DISCORD-BOT\Bot-PlayerTauz\Bot-PlayerTauz\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

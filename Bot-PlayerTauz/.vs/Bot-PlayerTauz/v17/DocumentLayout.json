@@ -1,17 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\estudo C#\\Bot-PlayerTauz\\",
+  "WorkspaceRootPath": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|e:\\estudo c#\\bot-playertauz\\bot-playertauz\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|e:\\estudo c#\\discord-bot\\bot-playertauz\\bot-playertauz\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|solutionrelative:bot-playertauz\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|e:\\estudo c#\\bot-playertauz\\bot-playertauz\\discord\\commandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|e:\\estudo c#\\discord-bot\\bot-playertauz\\bot-playertauz\\discord\\commandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|solutionrelative:bot-playertauz\\discord\\commandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|e:\\estudo c#\\bot-playertauz\\bot-playertauz\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|e:\\estudo c#\\discord-bot\\bot-playertauz\\bot-playertauz\\modules\\general.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|solutionrelative:bot-playertauz\\modules\\general.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|e:\\estudo c#\\discord-bot\\bot-playertauz\\bot-playertauz\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{939C47CE-E723-469C-A86F-08575454610B}|Bot-PlayerTauz\\Bot-PlayerTauz.csproj|solutionrelative:bot-playertauz\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,26 +42,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "General.cs",
+              "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Modules\\General.cs",
+              "RelativeDocumentMoniker": "Bot-PlayerTauz\\Modules\\General.cs",
+              "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Modules\\General.cs",
+              "RelativeToolTip": "Bot-PlayerTauz\\Modules\\General.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T17:47:39.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "CommandHandler.cs",
-              "DocumentMoniker": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Discord\\CommandHandler.cs",
+              "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Discord\\CommandHandler.cs",
               "RelativeDocumentMoniker": "Bot-PlayerTauz\\Discord\\CommandHandler.cs",
-              "ToolTip": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Discord\\CommandHandler.cs",
+              "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Discord\\CommandHandler.cs",
               "RelativeToolTip": "Bot-PlayerTauz\\Discord\\CommandHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-09T03:02:13.071Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\appsettings.json",
+              "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\appsettings.json",
               "RelativeDocumentMoniker": "Bot-PlayerTauz\\appsettings.json",
-              "ToolTip": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\appsettings.json",
+              "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\appsettings.json",
               "RelativeToolTip": "Bot-PlayerTauz\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAADAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-04-09T02:41:50.669Z",
               "EditorCaption": ""
@@ -66,11 +83,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Program.cs",
+              "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Program.cs",
               "RelativeDocumentMoniker": "Bot-PlayerTauz\\Program.cs",
-              "ToolTip": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Program.cs",
+              "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Program.cs",
               "RelativeToolTip": "Bot-PlayerTauz\\Program.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAgwDYAAAAAAAAA",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwCoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-09T00:10:37.847Z",
               "EditorCaption": ""

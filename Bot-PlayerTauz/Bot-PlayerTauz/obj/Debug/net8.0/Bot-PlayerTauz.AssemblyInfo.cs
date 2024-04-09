@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bot-PlayerTauz")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f364541d130f076894c058a2785dbd02788c320")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bot-PlayerTauz")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bot-PlayerTauz")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

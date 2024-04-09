@@ -1,4 +1,5 @@
 ﻿
+using Bot_PlayerTauz.Discord;
 using Discord;
 using Discord.Addons.Hosting;
 using Discord.Commands;
@@ -30,45 +31,43 @@ class Program
             })
             .ConfigureServices((context, services) =>
             {
-                //Discord Socket Service
-                var discordConfig = new DiscordSocketConfig()
+     
+                services.AddDiscordHost((config, _) =>
                 {
-                    LogLevel = LogSeverity.Verbose,
-                    MessageCacheSize = 1000,
-                    AlwaysDownloadUsers = true,
-                };
+                    config.SocketConfig = new DiscordSocketConfig()
+                    {
+                        LogLevel = LogSeverity.Verbose,
+                        MessageCacheSize = 1000,
+                        AlwaysDownloadUsers = true,
+                    };
 
-                var discordSocketClient = new DiscordSocketClient(discordConfig);
+                    config.Token = context.Configuration["DiscordEnv:Token"];
+                });
 
-                var token = context.Configuration["DiscordEnv:Token"];
-
-
-                //Command Service
-                var commandConfig = new CommandServiceConfig()
+                services.AddCommandService((config, _) =>
                 {
-                    CaseSensitiveCommands = false,
-                    LogLevel = LogSeverity.Debug,
-                    DefaultRunMode = RunMode.Sync
-                };
+                    config.CaseSensitiveCommands = false;
+                    config.LogLevel = LogSeverity.Debug;
+                    config.DefaultRunMode = RunMode.Async;
+                });
 
-                var commandService = new CommandService(commandConfig);
-
-
-                services.AddSingleton(discordSocketClient);
-
-                discordSocketClient.LoginAsync(TokenType.Bot, token);
-                discordSocketClient.StartAsync();
+                
+                services.AddHostedService<CommandHandler>();
 
             })
             .UseConsoleLifetime();
-          
 
         var host = builder.Build();
 
-        using (host)
-        {
-            await host.RunAsync();
-        }
-          
+        await host.RunAsync();
+
+
+
+
+
+
+
+
+
     }
 }

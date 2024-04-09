@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sp9WMN6G61omCXIMGROdd+//TRP40kztnNdBTvz1FJeMo9x5ezx9uKATUkak1+or33k4fQUqR2dNtihRi8JvPQ==",
+  "dgSpecHash": "c/Sq9TP1B6LNPN92FbRJ6h2WFqPx4dydHUsMdc6d/fn/iQXv69IB08bE1eTWsa9/NXNWShZZHNjWqwpfrPBK4Q==",
   "success": true,
-  "projectFilePath": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj",
+  "projectFilePath": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\discord.addons.hosting\\6.0.0\\discord.addons.hosting.6.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\discord.net\\3.14.1\\discord.net.3.14.1.nupkg.sha512",

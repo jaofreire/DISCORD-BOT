@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj": {}
+    "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj": {}
   },
   "projects": {
-    "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj": {
+    "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj",
+        "projectUniqueName": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj",
         "projectName": "Bot-PlayerTauz",
-        "projectPath": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj",
+        "projectPath": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\Bot-PlayerTauz.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\estudo C#\\Bot-PlayerTauz\\Bot-PlayerTauz\\obj\\",
+        "outputPath": "E:\\estudo C#\\DISCORD-BOT\\Bot-PlayerTauz\\Bot-PlayerTauz\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
