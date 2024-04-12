@@ -1,71 +1,46 @@
 ﻿
 using Bot_PlayerTauz.Discord;
+using Bot_PlayerTauz.Services;
 using Discord;
 using Discord.Addons.Hosting;
 using Discord.Commands;
 using Discord.WebSocket;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 class Program
 {
-
     static async Task Main()
     {
-        var builder = new HostBuilder()
-            .ConfigureAppConfiguration(x =>
+        var builder = Host.CreateApplicationBuilder();
+
+        builder.Services.AddDiscordHost((config, _) =>
+        {
+            config.SocketConfig = new DiscordSocketConfig()
             {
-                var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", false, true)
-                .Build();
+                LogLevel = LogSeverity.Verbose,
+                MessageCacheSize = 1000,
+                AlwaysDownloadUsers = true,
+                GatewayIntents = GatewayIntents.All
+            };
 
-                x.AddConfiguration(configuration);
-            })
-            .ConfigureLogging(x =>
-            {
-                x.AddConsole();
-                x.SetMinimumLevel(LogLevel.Debug);
-            })
-            .ConfigureServices((context, services) =>
-            {
-     
-                services.AddDiscordHost((config, _) =>
-                {
-                    config.SocketConfig = new DiscordSocketConfig()
-                    {
-                        LogLevel = LogSeverity.Verbose,
-                        MessageCacheSize = 1000,
-                        AlwaysDownloadUsers = true,
-                    };
+            config.Token = builder.Configuration["DiscordEnv:Token"];
 
-                    config.Token = context.Configuration["DiscordEnv:Token"];
-                });
+        });
 
-                services.AddCommandService((config, _) =>
-                {
-                    config.CaseSensitiveCommands = false;
-                    config.LogLevel = LogSeverity.Debug;
-                    config.DefaultRunMode = RunMode.Async;
-                });
+        builder.Services.AddCommandService((config, _) =>
+        {
+            config.CaseSensitiveCommands = false;
+            config.LogLevel = LogSeverity.Debug;
+            config.DefaultRunMode = RunMode.Async;
+        });
 
-                
-                services.AddHostedService<CommandHandler>();
-
-            })
-            .UseConsoleLifetime();
+        builder.Services.AddHostedService<CommandHandler>();
+        builder.Services.AddSingleton<AudioService>();
 
         var host = builder.Build();
 
         await host.RunAsync();
-
-
-
-
-
-
 
 
 

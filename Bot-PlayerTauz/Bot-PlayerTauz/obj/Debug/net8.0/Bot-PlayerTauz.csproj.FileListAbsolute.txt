@@ -117,3 +117,4 @@ E:\estudo C#\DISCORD-BOT\Bot-PlayerTauz\Bot-PlayerTauz\obj\Debug\net8.0\refint\B
 E:\estudo C#\DISCORD-BOT\Bot-PlayerTauz\Bot-PlayerTauz\obj\Debug\net8.0\Bot-PlayerTauz.pdb
 E:\estudo C#\DISCORD-BOT\Bot-PlayerTauz\Bot-PlayerTauz\obj\Debug\net8.0\Bot-PlayerTauz.genruntimeconfig.cache
 E:\estudo C#\DISCORD-BOT\Bot-PlayerTauz\Bot-PlayerTauz\obj\Debug\net8.0\ref\Bot-PlayerTauz.dll
+E:\estudo C#\DISCORD-BOT\Bot-PlayerTauz\Bot-PlayerTauz\bin\Debug\net8.0\runtimes\win-x64\native\opus.dll

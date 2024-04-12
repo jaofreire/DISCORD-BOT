@@ -13,10 +13,12 @@ namespace Bot_PlayerTauz.Discord
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly CommandService _commandService;
+        private readonly DiscordSocketClient _socketClient;
         private readonly IConfiguration _configuration;
 
-        public CommandHandler(IServiceProvider serviceProvider, DiscordSocketClient socketClient, CommandService commandService, IConfiguration configuration, ILogger<DiscordClientService> logger) : base(socketClient, logger)
+        public CommandHandler(IServiceProvider serviceProvider, DiscordSocketClient socketClient, CommandService commandService, IConfiguration configuration, ILogger<CommandHandler> logger) : base(socketClient, logger)
         {
+            _socketClient = socketClient;
             _serviceProvider = serviceProvider;
             _commandService = commandService;
             _configuration = configuration;
@@ -24,7 +26,7 @@ namespace Bot_PlayerTauz.Discord
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            Client.MessageReceived += OnMessageReceived;
+            _socketClient.MessageReceived += OnMessageReceived;
             await _commandService.AddModulesAsync(Assembly.GetEntryAssembly(), _serviceProvider);
         }
 
@@ -34,9 +36,9 @@ namespace Bot_PlayerTauz.Discord
             if (message.Source != MessageSource.User) return;
 
             int argPos = 0;
-            if (!message.HasStringPrefix(_configuration["DiscordEnv:Prefix"], ref argPos) && !message.HasMentionPrefix(Client.CurrentUser, ref argPos)) return;
+            if (!message.HasStringPrefix(_configuration["DiscordEnv:Prefix"], ref argPos) && !message.HasMentionPrefix(_socketClient.CurrentUser, ref argPos)) return;
 
-            var context = new SocketCommandContext(Client, message);
+            var context = new SocketCommandContext(_socketClient, message);
 
             await _commandService.ExecuteAsync(context, argPos, _serviceProvider);
 
