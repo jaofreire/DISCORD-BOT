@@ -1,88 +1,133 @@
-﻿using Discord.Interactions;
-using Lavalink4NET;
-using Lavalink4NET.Players.Vote;
-using Lavalink4NET.Players;
-using Lavalink4NET.Rest.Entities.Tracks;
-using Lavalink4NET.DiscordNet;
+﻿using DSharpPlus;
+using DSharpPlus.CommandsNext.Attributes;
+using DSharpPlus.Entities;
+using DSharpPlus.Lavalink;
+using DSharpPlus.SlashCommands;
 using Microsoft.Extensions.Logging;
+
 
 namespace Bot_PLayer_Tauz_2._0.Modules
 {
-    public class InteractionModule : InteractionModuleBase<SocketInteractionContext>
+    public class InteractionModule : ApplicationCommandModule
     {
-        private readonly IAudioService _audioService;
-        private readonly ILogger<InteractionModule> _logger;
 
-        public InteractionModule(IAudioService audioService, ILogger<InteractionModule> logger)
+        [SlashCommand("join", "Join VoiceChannel")]
+        public async Task JoinAsync(InteractionContext ctx, [Option("DiscordChannel", "Channel to join")]DiscordChannel voiceChannel)
         {
-            _audioService = audioService;
-            _logger = logger;
+            var lavaClient = ctx.Client.GetLavalink();
+            var lavaNode = lavaClient.ConnectedNodes.Values.First();
+
+            if (!await ValidateJoinAsync(ctx, lavaClient, lavaNode, voiceChannel)) return;
+
+            await lavaNode.ConnectAsync(voiceChannel);
+            await ctx.Channel.SendMessageAsync("Join " + voiceChannel.Name);
         }
 
-        [SlashCommand("play", "Plays track", runMode: RunMode.Async)]
-        public async Task PlayMusicAsync(string musicName)
+        [SlashCommand("leave", "Leave to channel")]
+        public async Task LeaveAsync(InteractionContext ctx, [Option("DiscordChannel", "Channel to leave")]DiscordChannel voiceChannel)
+        {
+            var lavaClient = ctx.Client.GetLavalink();
+            var lavaNode = lavaClient.ConnectedNodes.Values.First();
+            var conn = lavaNode.GetGuildConnection(ctx.Member.VoiceState.Guild);
+
+            if(!await ValidateLeaveAsync(ctx, lavaClient, conn, voiceChannel)) return;
+
+            await conn.DisconnectAsync();
+            await ctx.Channel.SendMessageAsync("Leave " + voiceChannel.Name);
+            
+        }
+
+        [SlashCommand("play", "Plays Track")]
+        public async Task PlayTrack(InteractionContext ctx, [Option("MusicName", "Music to Play")] string musicName)
         {
 
-            await ReplyAsync("Processando ação");
+            var lavaClient = ctx.Client.GetLavalink();
+            var node = lavaClient.ConnectedNodes.Values.First();
+            var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
 
-            //await DeferAsync().ConfigureAwait(false);
+            if (!await ValidatePlayTrackAsync(ctx, conn)) return;
 
-            var player = await GetPlayerAsync(connectToVoiceChannel: true).ConfigureAwait(false);
+            var loadResult = await node.Rest.GetTracksAsync(musicName);
 
-            await ReplyAsync("Ação concluída");
+            if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
 
+            var track = loadResult.Tracks.First();
 
-            if (player == null) return;
-
-
-            var track = await _audioService.Tracks
-                .LoadTrackAsync(musicName, TrackSearchMode.YouTube)
-                .ConfigureAwait(false);
-
-            if (track == null)
-            {
-                await ReplyAsync("Não foi possível encontrar a música").ConfigureAwait(false);
-                return;
-            }
-
-            var position = await player.PlayAsync(track).ConfigureAwait(false);
-
-            if (position is 0)
-            {
-                await ReplyAsync("Música tocando " + track.Uri).ConfigureAwait(false);
-            }
-
-            _logger.LogInformation("User {user} used the play command", Context.User.Username);
-
-            await ReplyAsync("Music is playing!");
+            await conn.PlayAsync(track);
+            await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: "+ track.Uri);
 
         }
 
-        private async ValueTask<VoteLavalinkPlayer?> GetPlayerAsync(bool connectToVoiceChannel = true)
+        private async ValueTask<bool> ValidateJoinAsync(InteractionContext ctx, LavalinkExtension lavaClient, LavalinkNodeConnection lavaNode, DiscordChannel voiceChannel)
         {
-            var retrieveOptions = new PlayerRetrieveOptions(
-                ChannelBehavior: connectToVoiceChannel ? PlayerChannelBehavior.Join : PlayerChannelBehavior.None);
 
-            var result = await _audioService.Players
-                .RetrieveAsync(Context, playerFactory: PlayerFactory.Vote, retrieveOptions)
-                .ConfigureAwait(false);
-
-
-            if (!result.IsSuccess)
+            if (!lavaClient.ConnectedNodes.Any())
             {
-                var errorMessage = result.Status switch
-                {
-                    PlayerRetrieveStatus.UserNotInVoiceChannel => "É necessário estar em um canal de voz!!",
-                    PlayerRetrieveStatus.BotNotConnected => "O bot esta offline por enquanto!!",
-                    _ => "Erro Desconhecido"
-                };
-
-                await ReplyAsync(errorMessage).ConfigureAwait(false);
-                return null;
+                await ctx.Channel.SendMessageAsync("Conexão com LavaLink não foi estabelecida");
+                return false;
             }
 
-            return result.Player;
+            if (voiceChannel.Type != ChannelType.Voice)
+            {
+                await ctx.Channel.SendMessageAsync("Apenas canais de voz");
+                return false;
+            }
 
+            return true;
+        }
+
+        private async ValueTask<bool> ValidateLeaveAsync(InteractionContext ctx, LavalinkExtension lavaClient, LavalinkGuildConnection conn, DiscordChannel voiceChannel)
+        {
+
+            if (!lavaClient.ConnectedNodes.Any())
+            {
+                await ctx.Channel.SendMessageAsync("Conexão com LavaLink não foi estabelecida");
+                return false;
+            }
+
+            if (conn == null)
+            {
+                await ctx.Channel.SendMessageAsync("LavaLink não está conectado");
+                return false;
+            }
+
+            if (voiceChannel.Type != ChannelType.Voice)
+            {
+                await ctx.Channel.SendMessageAsync("Apenas canais de voz");
+                return false;
+            }
+
+            return true;
+        }
+
+        private async ValueTask<bool> ValidatePlayTrackAsync(InteractionContext ctx, LavalinkGuildConnection conn)
+        {
+            if (ctx.Member.VoiceState == null || ctx.Member.VoiceState.Channel == null)
+            {
+                await ctx.Channel.SendMessageAsync("É necessário estar em um canal de voz");
+                return false;
+            }
+
+            if (conn == null)
+            {
+                await ctx.Channel.SendMessageAsync("LavaLink nao está conectado");
+                return false;
+            }
+
+            
+
+            return true;
+        }
+
+        private async ValueTask<bool> ValidateTrackAsync(InteractionContext ctx ,LavalinkLoadResult loadResult, string musicName)
+        {
+            if (loadResult.LoadResultType == LavalinkLoadResultType.LoadFailed || loadResult.LoadResultType == LavalinkLoadResultType.NoMatches)
+            {
+                await ctx.Channel.SendMessageAsync("Falha em encontrar " + musicName);
+                return false;
+            }
+
+            return true;
         }
     }
 }

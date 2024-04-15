@@ -65,3 +65,67 @@ E:\estudo C#\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer
 E:\estudo C#\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.genruntimeconfig.cache
 E:\estudo C#\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\ref\Bot PLayer-Tauz 2.0.dll
 E:\estudo C#\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\appsettings.json
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\appsettings.json
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Bot PLayer-Tauz 2.0.exe
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Bot PLayer-Tauz 2.0.deps.json
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Bot PLayer-Tauz 2.0.runtimeconfig.json
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Bot PLayer-Tauz 2.0.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Bot PLayer-Tauz 2.0.pdb
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Discord.Addons.Hosting.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Discord.Net.Commands.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Discord.Net.Core.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Discord.Net.Interactions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Discord.Net.Rest.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Discord.Net.WebSocket.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Configuration.CommandLine.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Hosting.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Logging.Configuration.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Logging.Console.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Logging.Debug.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Logging.EventLog.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Logging.EventSource.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\Newtonsoft.Json.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\System.Interactive.Async.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\System.Linq.Async.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\System.Reactive.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.csproj.AssemblyReference.cache
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.GeneratedMSBuildEditorConfig.editorconfig
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.AssemblyInfoInputs.cache
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.AssemblyInfo.cs
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.csproj.CoreCompileInputs.cache
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.sourcelink.json
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLay.A0A5C71D.Up2Date
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\refint\Bot PLayer-Tauz 2.0.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.pdb
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.genruntimeconfig.cache
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\obj\Debug\net8.0\ref\Bot PLayer-Tauz 2.0.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\ConcurrentCollections.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\DSharpPlus.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\DSharpPlus.CommandsNext.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\DSharpPlus.Interactivity.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\DSharpPlus.Lavalink.dll
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0\bin\Debug\net8.0\DSharpPlus.SlashCommands.dll

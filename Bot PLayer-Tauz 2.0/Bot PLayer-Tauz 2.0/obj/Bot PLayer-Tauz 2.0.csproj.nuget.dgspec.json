@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\estudo C#\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj": {}
+    "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj": {}
   },
   "projects": {
-    "E:\\estudo C#\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj": {
+    "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\estudo C#\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
+        "projectUniqueName": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
         "projectName": "Bot PLayer-Tauz 2.0",
-        "projectPath": "E:\\estudo C#\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
+        "projectPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\estudo C#\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\obj\\",
+        "outputPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,33 +46,29 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "DSharpPlus": {
+              "target": "Package",
+              "version": "[4.4.6, )"
+            },
+            "DSharpPlus.CommandsNext": {
+              "target": "Package",
+              "version": "[4.4.6, )"
+            },
+            "DSharpPlus.Interactivity": {
+              "target": "Package",
+              "version": "[4.4.6, )"
+            },
+            "DSharpPlus.Lavalink": {
+              "target": "Package",
+              "version": "[4.4.6, )"
+            },
+            "DSharpPlus.SlashCommands": {
+              "target": "Package",
+              "version": "[4.4.6, )"
+            },
             "Discord.Addons.Hosting": {
               "target": "Package",
               "version": "[6.0.0, )"
-            },
-            "Discord.Net": {
-              "target": "Package",
-              "version": "[3.14.1, )"
-            },
-            "Discord.Net.Core": {
-              "target": "Package",
-              "version": "[3.14.1, )"
-            },
-            "Discord.Net.Interactions": {
-              "target": "Package",
-              "version": "[3.14.1, )"
-            },
-            "Discord.Net.WebSocket": {
-              "target": "Package",
-              "version": "[3.14.1, )"
-            },
-            "Lavalink4NET": {
-              "target": "Package",
-              "version": "[4.0.18, )"
-            },
-            "Lavalink4NET.Discord.NET": {
-              "target": "Package",
-              "version": "[4.0.18, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
