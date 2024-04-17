@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\discord-bot\\bot player-tauz 2.0\\bot player-tauz 2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot player-tauz 2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\discord-bot\\bot player-tauz 2.0\\bot player-tauz 2.0\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot player-tauz 2.0\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\discord-bot\\bot player-tauz 2.0\\bot player-tauz 2.0\\modules\\interactionmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot player-tauz 2.0\\modules\\interactionmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\discord-bot\\bot player-tauz 2.0\\bot player-tauz 2.0\\data\\mongocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot player-tauz 2.0\\data\\mongocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\discord-bot\\bot player-tauz 2.0\\bot player-tauz 2.0\\data\\models\\musicmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot player-tauz 2.0\\data\\models\\musicmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\discord-bot\\bot player-tauz 2.0\\bot player-tauz 2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C243E9F-9592-47C5-B373-45590193A099}|Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot player-tauz 2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,41 +46,67 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Program.cs",
+              "RelativeDocumentMoniker": "Bot PLayer-Tauz 2.0\\Program.cs",
+              "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Program.cs",
+              "RelativeToolTip": "Bot PLayer-Tauz 2.0\\Program.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABIAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T21:55:43.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MusicModel.cs",
+              "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Data\\Models\\MusicModel.cs",
+              "RelativeDocumentMoniker": "Bot PLayer-Tauz 2.0\\Data\\Models\\MusicModel.cs",
+              "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Data\\Models\\MusicModel.cs",
+              "RelativeToolTip": "Bot PLayer-Tauz 2.0\\Data\\Models\\MusicModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T13:21:40.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "MongoContext.cs",
+              "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Data\\MongoContext.cs",
+              "RelativeDocumentMoniker": "Bot PLayer-Tauz 2.0\\Data\\MongoContext.cs",
+              "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Data\\MongoContext.cs",
+              "RelativeToolTip": "Bot PLayer-Tauz 2.0\\Data\\MongoContext.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAqwBoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T13:03:04.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "InteractionModule.cs",
               "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Modules\\InteractionModule.cs",
               "RelativeDocumentMoniker": "Bot PLayer-Tauz 2.0\\Modules\\InteractionModule.cs",
               "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Modules\\InteractionModule.cs",
               "RelativeToolTip": "Bot PLayer-Tauz 2.0\\Modules\\InteractionModule.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAQwDQAAAAAAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwBQAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-14T22:12:21.312Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\appsettings.json",
               "RelativeDocumentMoniker": "Bot PLayer-Tauz 2.0\\appsettings.json",
               "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\appsettings.json",
               "RelativeToolTip": "Bot PLayer-Tauz 2.0\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-04-14T22:01:04.962Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Program.cs",
-              "RelativeDocumentMoniker": "Bot PLayer-Tauz 2.0\\Program.cs",
-              "ToolTip": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Program.cs",
-              "RelativeToolTip": "Bot PLayer-Tauz 2.0\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEcAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T21:55:43.736Z",
               "EditorCaption": ""
             }
           ]

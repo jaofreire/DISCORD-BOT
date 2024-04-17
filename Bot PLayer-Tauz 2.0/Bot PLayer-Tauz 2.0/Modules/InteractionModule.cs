@@ -1,9 +1,7 @@
 ﻿using DSharpPlus;
-using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
 using DSharpPlus.Lavalink;
 using DSharpPlus.SlashCommands;
-using Microsoft.Extensions.Logging;
 
 
 namespace Bot_PLayer_Tauz_2._0.Modules
@@ -17,7 +15,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             var lavaClient = ctx.Client.GetLavalink();
             var lavaNode = lavaClient.ConnectedNodes.Values.First();
 
-            if (!await ValidateJoinAsync(ctx, lavaClient, lavaNode, voiceChannel)) return;
+            if (!await ValidateJoinAsync(ctx, lavaClient, voiceChannel)) return;
 
             await lavaNode.ConnectAsync(voiceChannel);
             await ctx.Channel.SendMessageAsync("Join " + voiceChannel.Name);
@@ -58,7 +56,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         }
 
-        private async ValueTask<bool> ValidateJoinAsync(InteractionContext ctx, LavalinkExtension lavaClient, LavalinkNodeConnection lavaNode, DiscordChannel voiceChannel)
+        private async ValueTask<bool> ValidateJoinAsync(InteractionContext ctx, LavalinkExtension lavaClient, DiscordChannel voiceChannel)
         {
 
             if (!lavaClient.ConnectedNodes.Any())

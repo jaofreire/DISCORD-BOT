@@ -1,4 +1,5 @@
-﻿using Bot_PLayer_Tauz_2._0.Modules;
+﻿using Bot_PLayer_Tauz_2._0.Data;
+using Bot_PLayer_Tauz_2._0.Modules;
 using DSharpPlus;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WebHostExtensions;
 
 class Program
 {
@@ -17,53 +19,24 @@ class Program
     {
         var builder = Host.CreateApplicationBuilder();
 
-        var discord = new DiscordClient(new DiscordConfiguration()
-        {
-            Token = builder.Configuration["DiscordEnv:Token"],
-            TokenType = DSharpPlus.TokenType.Bot,
-            Intents = DiscordIntents.All,
-            MinimumLogLevel = LogLevel.Debug
-        });
+        var discordClient = builder.Services.AddDiscordClientServices(builder.Configuration, builder.Configuration["DiscordEnv:Token"]);
 
-        discord.Ready += IsClientReady;
+        builder.Services.AddClientSlashCommands<InteractionModule>(discordClient, builder.Configuration.GetValue<ulong>("DiscordEnv:GuildId"));
 
-        static Task IsClientReady(DiscordClient sender, ReadyEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
+        var lavaLinkClient = builder.Services.AddLavaLinkServices(discordClient);
 
-        var slashCommands = discord.UseSlashCommands();
-
-        slashCommands.RegisterCommands<InteractionModule>(builder.Configuration.GetValue<ulong>("DiscordEnv:GuildId"));
-
-        discord.UseInteractivity( new InteractivityConfiguration()
-        {
-            Timeout = TimeSpan.FromSeconds(30)
-        });
-
-        var endpoint = new ConnectionEndpoint()
-        {
-            Hostname = builder.Configuration["LavaLink:Hostname"],
-            Port = builder.Configuration.GetValue<int>("LavaLink:Port"),
-            Secured = true,
-        };
-
-        var lavaLinkConfig = new LavalinkConfiguration()
-        {
-            Password = builder.Configuration["LavaLink:Password"],
-            RestEndpoint = endpoint,
-            SocketEndpoint = endpoint
-        };
-
-        var lavaLink = discord.UseLavalink();
-
-        await discord.ConnectAsync();
-        await lavaLink.ConnectAsync(lavaLinkConfig);
+        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink:Hostname"]
+            , builder.Configuration.GetValue<int>("LavaLink:Port")
+            , builder.Configuration["LavaLink:Password"]);
 
         builder.Services.AddLogging(x =>
         {
             x.AddConsole().SetMinimumLevel(LogLevel.Debug);
         });
+
+        builder.Services.UseDiscordBotMusicSDK(builder.Configuration, discordClient, lavaLinkClient, lavaLinkConfig);
+
+        builder.Services.AddSingleton<MongoContext>();
 
         await Task.Delay(-1);
 

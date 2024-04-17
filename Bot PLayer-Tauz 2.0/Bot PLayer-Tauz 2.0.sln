@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bot PLayer-Tauz 2.0", "Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0.csproj", "{0C243E9F-9592-47C5-B373-45590193A099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot PLayer-Tauz 2.0", "Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0.csproj", "{0C243E9F-9592-47C5-B373-45590193A099}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHostExtensions", "WebHost.Extensions\WebHostExtensions.csproj", "{EE624D4B-D77C-4949-A113-1E03077D53B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0C243E9F-9592-47C5-B373-45590193A099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C243E9F-9592-47C5-B373-45590193A099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C243E9F-9592-47C5-B373-45590193A099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE624D4B-D77C-4949-A113-1E03077D53B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE624D4B-D77C-4949-A113-1E03077D53B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE624D4B-D77C-4949-A113-1E03077D53B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE624D4B-D77C-4949-A113-1E03077D53B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,6 @@
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\WebHost.Extensions.csproj.AssemblyReference.cache
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\WebHost.Extensions.GeneratedMSBuildEditorConfig.editorconfig
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\WebHost.Extensions.AssemblyInfoInputs.cache
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\WebHost.Extensions.AssemblyInfo.cs
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\WebHost.Extensions.csproj.CoreCompileInputs.cache
+E:\estudo C#\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\WebHost.Extensions.sourcelink.json
