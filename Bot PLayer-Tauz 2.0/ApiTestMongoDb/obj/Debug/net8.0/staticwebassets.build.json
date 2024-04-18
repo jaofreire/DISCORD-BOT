@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "l5EIslyR0xtEUTuMIj/dWgCExlR2Zl0fk5TCWZvHh2o=",
+  "Source": "ApiTestMongoDb",
+  "BasePath": "_content/ApiTestMongoDb",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

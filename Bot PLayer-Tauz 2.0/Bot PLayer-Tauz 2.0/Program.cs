@@ -1,17 +1,14 @@
 ﻿using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Modules;
-using DSharpPlus;
-using DSharpPlus.EventArgs;
+using DSharpPlus.CommandsNext;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
-using DSharpPlus.Lavalink;
-using DSharpPlus.Net;
-using DSharpPlus.SlashCommands;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using WebHostExtensions;
+
 
 class Program
 {
@@ -21,7 +18,14 @@ class Program
 
         var discordClient = builder.Services.AddDiscordClientServices(builder.Configuration, builder.Configuration["DiscordEnv:Token"]);
 
-        builder.Services.AddClientSlashCommands<InteractionModule>(discordClient, builder.Configuration.GetValue<ulong>("DiscordEnv:GuildId"));
+        var dependenciesServices = new ServiceCollection()
+            .AddDbContext<MongoContext>(options =>
+            {
+                options.UseMongoDB(builder.Configuration["MongoDb:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
+            })
+            .BuildServiceProvider();
+
+        builder.Services.AddClientCommandsNext<CommandsModule>(discordClient, builder.Configuration["DiscordEnv:Prefix"], dependenciesServices);
 
         var lavaLinkClient = builder.Services.AddLavaLinkServices(discordClient);
 
@@ -29,15 +33,10 @@ class Program
             , builder.Configuration.GetValue<int>("LavaLink:Port")
             , builder.Configuration["LavaLink:Password"]);
 
-        builder.Services.AddLogging(x =>
-        {
-            x.AddConsole().SetMinimumLevel(LogLevel.Debug);
-        });
 
         builder.Services.UseDiscordBotMusicSDK(builder.Configuration, discordClient, lavaLinkClient, lavaLinkConfig);
 
-        builder.Services.AddSingleton<MongoContext>();
-
+       
         await Task.Delay(-1);
 
         var host = builder.Build();

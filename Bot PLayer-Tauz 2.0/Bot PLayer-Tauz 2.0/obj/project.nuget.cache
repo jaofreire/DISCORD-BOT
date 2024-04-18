@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "667H3av73xueFqc2Cod7Qvpg2iVVLYf0tUmhkI+MK0diD0YSxfdCkrhiA3qPWkJL5txpETfq8I2MiMIuAJ+IXQ==",
+  "dgSpecHash": "b4vGG0hs6QwM2U8qBMMHqL+J1t31T7guq+76pD37+uXXxBOJDEupv44kCGMViZk/ijeWmNoWXUvLRUoeeRPtgA==",
   "success": true,
   "projectFilePath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,11 @@
     "C:\\Users\\User\\.nuget\\packages\\dsharpplus.interactivity\\4.4.6\\dsharpplus.interactivity.4.4.6.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\dsharpplus.lavalink\\4.4.6\\dsharpplus.lavalink.4.4.6.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\dsharpplus.slashcommands\\4.4.6\\dsharpplus.slashcommands.4.4.6.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0\\microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",
@@ -53,6 +58,7 @@
     "C:\\Users\\User\\.nuget\\packages\\mongodb.bson\\2.25.0\\mongodb.bson.2.25.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mongodb.driver\\2.25.0\\mongodb.driver.2.25.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mongodb.driver.core\\2.25.0\\mongodb.driver.core.2.25.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\mongodb.entityframeworkcore\\7.0.0-preview.1\\mongodb.entityframeworkcore.7.0.0-preview.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mongodb.libmongocrypt\\1.8.2\\mongodb.libmongocrypt.1.8.2.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

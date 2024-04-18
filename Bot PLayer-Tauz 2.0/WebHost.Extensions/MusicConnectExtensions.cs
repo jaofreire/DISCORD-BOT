@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using DSharpPlus.Lavalink;
 using DSharpPlus.Net;
 using Microsoft.Extensions.DependencyInjection;
+using DSharpPlus.CommandsNext;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebHostExtensions
 {
@@ -64,19 +66,72 @@ namespace WebHostExtensions
             return lavaLinkConfig;
         }
 
-        public static void AddClientSlashCommands<T>(this IServiceCollection services,DiscordClient discord, ulong? guildID)
+        public static void AddClientSlashCommands<T>(this IServiceCollection services,DiscordClient discord, ulong? guildId)
             where T : ApplicationCommandModule
         {
-            
-            var slashCommands = discord.UseSlashCommands();
 
-            slashCommands.RegisterCommands<T>(guildID);
+            var slashCommands = discord.UseSlashCommands();
+         
+            slashCommands.RegisterCommands<T>(guildId);
 
             discord.UseInteractivity(new InteractivityConfiguration()
             {
                 Timeout = TimeSpan.FromSeconds(30)
             });
         }
+
+        public static void AddClientSlashCommands<T>(this IServiceCollection services,DiscordClient discord, ulong? guildId, ServiceProvider dependenciesServices)
+            where T : ApplicationCommandModule
+        {
+
+            var slashCommands = discord.UseSlashCommands(new SlashCommandsConfiguration()
+            {
+                Services = dependenciesServices,
+            });
+         
+            slashCommands.RegisterCommands<T>(guildId);
+
+            discord.UseInteractivity(new InteractivityConfiguration()
+            {
+                Timeout = TimeSpan.FromSeconds(30)
+            });
+        }
+        
+        public static void AddClientCommandsNext<T>(this IServiceCollection services,DiscordClient discord, string prefix)
+            where T : BaseCommandModule
+        {
+            var commands = discord.UseCommandsNext(new CommandsNextConfiguration()
+            {
+                StringPrefixes = new[] { prefix }
+            });
+
+            commands.RegisterCommands<T>();
+
+            discord.UseInteractivity(new InteractivityConfiguration()
+            {
+                Timeout = TimeSpan.FromSeconds(30)
+            });
+        }
+
+        public static void AddClientCommandsNext<T>(this IServiceCollection services,DiscordClient discord, string prefix, ServiceProvider dependenciesServices)
+            where T : BaseCommandModule
+        {
+            var commands = discord.UseCommandsNext(new CommandsNextConfiguration()
+            {
+                StringPrefixes = new[] { prefix },
+                Services = dependenciesServices
+                
+            });
+
+            commands.RegisterCommands<T>();
+
+            discord.UseInteractivity(new InteractivityConfiguration()
+            {
+                Timeout = TimeSpan.FromSeconds(30)
+            });
+        }
+   
+       
 
         public static void AddDiscordClientEventHandler(DiscordClient discord)
         {
