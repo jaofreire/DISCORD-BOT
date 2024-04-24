@@ -155,11 +155,11 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                         {
                             List<string> IdList = new List<string>();
 
-                            await ctx.Channel.SendMessageAsync($"Escolha uma das músicas encontradas com o nome {musicName}");
+                            await ctx.Channel.SendMessageAsync($"Escolha uma das músicas encontradas com o nome {musicName}\n Digite o Id da música desejada");
 
                             foreach (var musics in getMusics)
                             {
-                                await ctx.Channel.SendMessageAsync($" Id: {musics.Id} - \n Nome: {musics.Name.ToString()}\n Url: {musics.Url.ToString()}\n ---------------");
+                                await ctx.Channel.SendMessageAsync($" Id: {musics.Id} - \n Nome: {musics.Name}\n Url: {musics.Url}\n ---------------");
 
                                 IdList.Add(musics.Id.ToString());
                             }
@@ -173,6 +173,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                                         return true;
                                     }
                                 }
+                                
                                 return false;
                             });
 
@@ -223,6 +224,33 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
             await conn.PlayAsync(track);
             await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: " + track.Uri);
+
+        }
+
+        [Command("Pause")]
+        [Aliases("pa")]
+        public async Task PauseAsync(CommandContext ctx)
+        {
+            var lavaClient = ctx.Client.GetLavalink();
+            var node = lavaClient.ConnectedNodes.Values.First();
+            var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
+
+            if(!await ValidatePauseResumeAsync(ctx, conn)) return;
+
+            await conn.PauseAsync();
+        }
+
+        [Command("Resume")]
+        [Aliases("re")]
+        public async Task ResumeAsync(CommandContext ctx)
+        {
+            var lavaClient = ctx.Client.GetLavalink();
+            var node = lavaClient.ConnectedNodes.Values.First();
+            var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
+
+            if (!await ValidatePauseResumeAsync(ctx, conn)) return;
+
+            await conn.ResumeAsync();
 
         }
 
@@ -326,7 +354,28 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 return false;
             }
 
+            return true;
+        }
 
+        private async ValueTask<bool> ValidatePauseResumeAsync(CommandContext ctx, LavalinkGuildConnection conn)
+        {
+            if (ctx.Member.VoiceState == null || ctx.Member.VoiceState.Channel == null)
+            {
+                await ctx.Channel.SendMessageAsync("É necessário estar em um canal de voz");
+                return false;
+            }
+
+            if (conn == null)
+            {
+                await ctx.Channel.SendMessageAsync("LavaLink não esta conectado");
+                return false;
+            }
+
+            if (conn.CurrentState.CurrentTrack == null)
+            {
+                await ctx.Channel.SendMessageAsync("Nenhuma música esta tocando");
+                return false;
+            }
 
             return true;
         }
