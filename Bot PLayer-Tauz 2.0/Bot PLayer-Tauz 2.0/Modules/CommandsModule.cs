@@ -9,7 +9,6 @@ using DSharpPlus.Lavalink;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Bson;
 using System.Collections.Generic;
-using System.Xml.Linq;
 
 
 
@@ -138,7 +137,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
             var getMusics = await _mongoContext.Musics.Where(x => x.Name.Contains(musicName)).ToListAsync();
 
-            if (await ValidateExistMusicWithName(ctx, getMusics))
+            if (ValidateExistMusicWithName(ctx, getMusics))
             {
                 await ctx.Channel.SendMessageAsync($"Uma música com o nome {musicName} foi encontrada na sua lista, deseja toca-la?");
                 await ctx.Channel.SendMessageAsync("*sim* para confirmar, *nao* para tocar a música fora da lista");
@@ -154,30 +153,29 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                     {
                         if (getMusics.Count > 1)
                         {
+                            List<string> IdList = new List<string>();
 
                             await ctx.Channel.SendMessageAsync($"Escolha uma das músicas encontradas com o nome {musicName}");
 
-
-                            var count = 0;
                             foreach (var musics in getMusics)
                             {
-                                count++;
                                 await ctx.Channel.SendMessageAsync($" Id: {musics.Id} - \n Nome: {musics.Name.ToString()}\n Url: {musics.Url.ToString()}\n ---------------");
+
+                                IdList.Add(musics.Id.ToString());
                             }
-                            
-                            var responseMessageInTheList = await ctx.Message.GetNextMessageAsync(m =>
+
+                            var responseMessageInTheList = await ctx.Message.GetNextMessageAsync( m =>
                             {
-                                return m.Content.Length == 24;
+                                foreach (var Idmusics in IdList)
+                                {
+                                    if (m.Content == Idmusics)
+                                    {
+                                        return true;
+                                    }
+                                }
+                                return false;
                             });
 
-                            foreach (var musics in getMusics)
-                            {
-                                if (!responseMessageInTheList.Result.Content.Contains(musics.Id.ToString()))
-                                {
-                                    await ctx.Channel.SendMessageAsync("Id não existe no context");
-                                    return;
-                                }
-                            }
 
                             if (!responseMessageInTheList.TimedOut)
                             {
@@ -205,6 +203,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         }
 
+
         [Command("PlayUrl")]
         [Aliases("purl")]
         public async Task PlayTrackWithUrl(CommandContext ctx, Uri url)
@@ -227,7 +226,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         }
 
-        public async void PlayMusicAsync(CommandContext ctx, LavalinkNodeConnection node, LavalinkGuildConnection conn, string musicName)
+        private async void PlayMusicAsync(CommandContext ctx, LavalinkNodeConnection node, LavalinkGuildConnection conn, string musicName)
         {
             if (!await ValidatePlayTrackAsync(ctx, conn)) return;
 
@@ -241,7 +240,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: " + track.Uri);
         }
 
-        public async void PlayMusicWithUrlAsync(CommandContext ctx, LavalinkNodeConnection node, LavalinkGuildConnection conn, Uri Url)
+        private async void PlayMusicWithUrlAsync(CommandContext ctx, LavalinkNodeConnection node, LavalinkGuildConnection conn, Uri Url)
         {
             if (!await ValidatePlayTrackAsync(ctx, conn)) return;
 
@@ -332,7 +331,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             return true;
         }
 
-        private async ValueTask<bool> ValidateExistMusicWithName(CommandContext ctx, List<MusicModel> musicList)
+        private bool ValidateExistMusicWithName(CommandContext ctx, List<MusicModel> musicList)
         {
             if (!musicList.Any())
             {
