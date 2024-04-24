@@ -1,8 +1,5 @@
 ﻿using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Modules;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.Interactivity;
-using DSharpPlus.Interactivity.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

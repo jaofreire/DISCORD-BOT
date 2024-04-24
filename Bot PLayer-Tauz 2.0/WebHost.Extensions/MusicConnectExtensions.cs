@@ -10,6 +10,7 @@ using DSharpPlus.Net;
 using Microsoft.Extensions.DependencyInjection;
 using DSharpPlus.CommandsNext;
 using Microsoft.EntityFrameworkCore;
+using DSharpPlus.Interactivity.Enums;
 
 namespace WebHostExtensions
 {
@@ -76,6 +77,7 @@ namespace WebHostExtensions
 
             discord.UseInteractivity(new InteractivityConfiguration()
             {
+                PollBehaviour = PollBehaviour.KeepEmojis,
                 Timeout = TimeSpan.FromSeconds(30)
             });
         }
@@ -93,6 +95,7 @@ namespace WebHostExtensions
 
             discord.UseInteractivity(new InteractivityConfiguration()
             {
+                PollBehaviour = PollBehaviour.KeepEmojis,
                 Timeout = TimeSpan.FromSeconds(30)
             });
         }
@@ -109,6 +112,7 @@ namespace WebHostExtensions
 
             discord.UseInteractivity(new InteractivityConfiguration()
             {
+                PollBehaviour = PollBehaviour.KeepEmojis,
                 Timeout = TimeSpan.FromSeconds(30)
             });
         }
@@ -127,7 +131,8 @@ namespace WebHostExtensions
 
             discord.UseInteractivity(new InteractivityConfiguration()
             {
-                Timeout = TimeSpan.FromSeconds(30)
+                PollBehaviour = PollBehaviour.KeepEmojis,
+                Timeout = TimeSpan.FromMinutes(3)
             });
         }
    
