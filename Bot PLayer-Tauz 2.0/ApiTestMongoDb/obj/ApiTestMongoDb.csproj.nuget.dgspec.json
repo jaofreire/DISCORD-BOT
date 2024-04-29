@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\ApiTestMongoDb.csproj": {}
+    "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\ApiTestMongoDb.csproj": {}
   },
   "projects": {
-    "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\ApiTestMongoDb.csproj": {
+    "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\ApiTestMongoDb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\ApiTestMongoDb.csproj",
+        "projectUniqueName": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\ApiTestMongoDb.csproj",
         "projectName": "ApiTestMongoDb",
-        "projectPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\ApiTestMongoDb.csproj",
+        "projectPath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\ApiTestMongoDb.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\obj\\",
+        "outputPath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\ApiTestMongoDb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

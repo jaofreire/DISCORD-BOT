@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sGoTxv6d+D2SBU4dt6rUsPD8QKnPzeuWbn/XYC20TJNYs9j/jZjBsIcCdLYcxTY8gIbyGu8okuxWhVRuh6V5zw==",
+  "dgSpecHash": "Opw8GxjZhKPIgdq+R8rie/NyzWnpQTib/ye6eQNheUofc69Et6c+Fzs02yMR4vAyd4ZGlYA5rg4Oh1OCWOm71Q==",
   "success": true,
-  "projectFilePath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj",
+  "projectFilePath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

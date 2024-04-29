@@ -7219,11 +7219,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
+      "projectUniqueName": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
       "projectName": "Bot PLayer-Tauz 2.0",
-      "projectPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
+      "projectPath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\obj\\",
+      "outputPath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot PLayer-Tauz 2.0\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7241,8 +7241,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj": {
-              "projectPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj"
+            "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj": {
+              "projectPath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj"
             }
           }
         }

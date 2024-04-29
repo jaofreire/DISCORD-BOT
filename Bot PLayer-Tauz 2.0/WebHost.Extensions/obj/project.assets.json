@@ -5654,11 +5654,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj",
+      "projectUniqueName": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj",
       "projectName": "WebHostExtensions",
-      "projectPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj",
+      "projectPath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\WebHostExtensions.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\estudo C#\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\obj\\",
+      "outputPath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\WebHost.Extensions\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
