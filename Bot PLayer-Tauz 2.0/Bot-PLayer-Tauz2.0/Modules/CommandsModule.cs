@@ -1,4 +1,5 @@
-﻿using Bot_PLayer_Tauz_2._0.Data;
+﻿using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
+using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Data.Models;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
@@ -9,6 +10,7 @@ using DSharpPlus.Lavalink;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Bson;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 
 
@@ -31,27 +33,46 @@ namespace Bot_PLayer_Tauz_2._0.Modules
         [Aliases("j")]
         public async Task JoinAsync(CommandContext ctx ,[RemainingText]DiscordChannel voiceChannel)
         {
-            var lavaClient = ctx.Client.GetLavalink();
-            var lavaNode = lavaClient.ConnectedNodes.Values.First();
+            try
+            {
+                var lavaClient = ctx.Client.GetLavalink();
+                var lavaNode = lavaClient.ConnectedNodes.Values.First();
 
-            if (!await ValidateJoinAsync(ctx, lavaClient, voiceChannel)) return;
+                if (!await ValidateJoinAsync(ctx, lavaClient, voiceChannel)) return;
 
-            await lavaNode.ConnectAsync(voiceChannel);
-            await ctx.Channel.SendMessageAsync("Join " + voiceChannel.Name);
+                await lavaNode.ConnectAsync(voiceChannel);
+                await ctx.Channel.SendMessageAsync("Join " + voiceChannel.Name);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                return;
+            }
+            
         }
 
         [Command("Leave")]
         [Aliases("l")]
         public async Task LeaveAsync(CommandContext ctx, [RemainingText] DiscordChannel voiceChannel)
         {
-            var lavaClient = ctx.Client.GetLavalink();
-            var lavaNode = lavaClient.ConnectedNodes.Values.First();
-            var conn = lavaNode.GetGuildConnection(ctx.Member.VoiceState.Guild);
+            try
+            {
+                var lavaClient = ctx.Client.GetLavalink();
+                var lavaNode = lavaClient.ConnectedNodes.Values.First();
+                var conn = lavaNode.GetGuildConnection(ctx.Member.VoiceState.Guild);
 
-            if (!await ValidateLeaveAsync(ctx, lavaClient, conn, voiceChannel)) return;
+                if (!await ValidateLeaveAsync(ctx, lavaClient, conn, voiceChannel)) return;
 
-            await conn.DisconnectAsync();
-            await ctx.Channel.SendMessageAsync("Leave " + voiceChannel.Name);
+                await conn.DisconnectAsync();
+                await ctx.Channel.SendMessageAsync("Leave " + voiceChannel.Name);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                return;
+            }
         }
 
         #endregion
@@ -62,63 +83,90 @@ namespace Bot_PLayer_Tauz_2._0.Modules
         [Aliases("rm")]
         public async Task AddNewMusicAsync(CommandContext ctx, [RemainingText]string musicName)
         {
-            var lavaClient = ctx.Client.GetLavalink();
-            var node = lavaClient.ConnectedNodes.Values.First();
-
-            var loadResult = await node.Rest.GetTracksAsync(musicName);
-            await ctx.Channel.SendMessageAsync("Buscando música...");
-
-            if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
-
-            var track =  loadResult.Tracks.First();
-
-            var musicModel = new MusicModel()
+            try
             {
-                Name = musicName,
-                Url = track.Uri.ToString()
-            };
+                var lavaClient = ctx.Client.GetLavalink();
+                var node = lavaClient.ConnectedNodes.Values.First();
 
-            await ctx.Channel.SendMessageAsync("Adicionando...");
+                var loadResult = await node.Rest.GetTracksAsync(musicName);
+                await ctx.Channel.SendMessageAsync("Buscando música...");
 
-            await _mongoContext.Musics.AddAsync(musicModel);
-            await _mongoContext.SaveChangesAsync();
+                if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
 
-            await ctx.Channel.SendMessageAsync("Nova música " + musicName + " adicionada");
+                var track = loadResult.Tracks.First();
+
+                var musicModel = new MusicModel()
+                {
+                    Name = musicName,
+                    Url = track.Uri.ToString()
+                };
+
+                await ctx.Channel.SendMessageAsync("Adicionando...");
+
+                await _mongoContext.Musics.AddAsync(musicModel);
+                await _mongoContext.SaveChangesAsync();
+
+                await ctx.Channel.SendMessageAsync("Nova música " + musicName + " adicionada");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                return;
+            }
         }
 
         [Command("ListMusics")]
         [Aliases("lm")]
         public async Task ListAllMusicsAsync(CommandContext ctx)
         {
-            List<MusicModel> allMusics = await _mongoContext.Musics.ToListAsync();
-
-            await ctx.Channel.SendMessageAsync("Buscando...!");
-
-            foreach (var musics in allMusics)
+            try
             {
-                await ctx.Channel.SendMessageAsync($"Nome: {musics.Name.ToString().ToUpper()}\n Url: {musics.Url.ToString()}\n ----------------");
+                List<MusicModel> allMusics = await _mongoContext.Musics.ToListAsync();
+
+                await ctx.Channel.SendMessageAsync("Buscando...!");
+
+                foreach (var musics in allMusics)
+                {
+                    await ctx.Channel.SendMessageAsync($"Nome: {musics.Name.ToString().ToUpper()}\n Url: {musics.Url.ToString()}\n ----------------");
+                }
+
+                await ctx.Channel.SendMessageAsync("Músicas encontradas!!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                return;
             }
 
-            await ctx.Channel.SendMessageAsync("Músicas encontradas!!");
-
         }
-        
+
         [Command("SearchMusics")]
         [Aliases("sm")]
         public async Task SearchMusicsAsync(CommandContext ctx, [RemainingText]string musicName)
         {
-            List<MusicModel> musicList = await _mongoContext.Musics.Where(x => x.Name.Contains(musicName)).ToListAsync();
-
-            await ctx.Channel.SendMessageAsync($"Buscando músicas com o nome: {musicName} !!");
-
-            if (!await ValidateSearchMusicsAsync(ctx, musicList, musicName)) return;
-            
-            foreach (var musics in musicList)
+            try
             {
-                await ctx.Channel.SendMessageAsync($"Nome: {musics.Name.ToString().ToUpper()}\n Url: {musics.Url.ToString()}\n ----------------");
-            }
+                List<MusicModel> musicList = await _mongoContext.Musics.Where(x => x.Name.Contains(musicName)).ToListAsync();
 
-            await ctx.Channel.SendMessageAsync("Músicas encontradas!!");
+                await ctx.Channel.SendMessageAsync($"Buscando músicas com o nome: {musicName} !!");
+
+                if (!await ValidateSearchMusicsAsync(ctx, musicList, musicName)) return;
+
+                foreach (var musics in musicList)
+                {
+                    await ctx.Channel.SendMessageAsync($"Nome: {musics.Name.ToString().ToUpper()}\n Url: {musics.Url.ToString()}\n ----------------");
+                }
+
+                await ctx.Channel.SendMessageAsync("Músicas encontradas!!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                return;
+            }
 
         }
 
@@ -130,77 +178,113 @@ namespace Bot_PLayer_Tauz_2._0.Modules
         [Aliases("p")]
         public async Task PlayTrackWithName(CommandContext ctx, [RemainingText]string musicName)
         {
-
-            var lavaClient = ctx.Client.GetLavalink();
-            var node = lavaClient.ConnectedNodes.Values.First();
-            var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
-
-            var getMusics = await _mongoContext.Musics.Where(x => x.Name.Contains(musicName)).ToListAsync();
-
-            if (ValidateExistMusicWithName(ctx, getMusics))
+            try
             {
-                await ctx.Channel.SendMessageAsync($"Uma música com o nome {musicName} foi encontrada na sua lista, deseja toca-la?");
-                await ctx.Channel.SendMessageAsync("*sim* para confirmar, *nao* para tocar a música fora da lista");
+                var lavaClient = ctx.Client.GetLavalink();
+                var node = lavaClient.ConnectedNodes.Values.First();
+                var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
 
-                var responseMessage = await ctx.Message.GetNextMessageAsync(m =>
-                {
-                    return m.Content.ToLower() == "sim" || m.Content.ToLower() == "nao";
-                });
+                List<MusicModel> queueList = new List<MusicModel>();
 
-                if (!responseMessage.TimedOut)
+                var getMusics = await _mongoContext.Musics.Where(x => x.Name.Contains(musicName)).ToListAsync();
+
+                if (!await ValidateIfUserInTheChannel(ctx)) return;
+
+                if (ValidateExistMusicWithName(ctx, getMusics))
                 {
-                    if (responseMessage.Result.Content.Contains("sim"))
+                    await ctx.Channel.SendMessageAsync($"Uma música com o nome {musicName} foi encontrada na sua lista, deseja toca-la?");
+                    await ctx.Channel.SendMessageAsync("*sim* para confirmar, *nao* para tocar a música fora da lista");
+
+                    var responseMessage = await ctx.Message.GetNextMessageAsync(m =>
                     {
-                        if (getMusics.Count > 1)
+                        return m.Content.ToLower() == "sim" || m.Content.ToLower() == "nao";
+                    });
+
+                    if (!responseMessage.TimedOut)
+                    {
+                        if (responseMessage.Result.Content.Contains("sim"))
                         {
-                            List<string> IdList = new List<string>();
-
-                            await ctx.Channel.SendMessageAsync($"Escolha uma das músicas encontradas com o nome {musicName}\n Digite o Id da música desejada");
-
-                            foreach (var musics in getMusics)
+                            if (getMusics.Count > 1)
                             {
-                                await ctx.Channel.SendMessageAsync($" Id: {musics.Id} - \n Nome: {musics.Name}\n Url: {musics.Url}\n ---------------");
+                                List<string> IdList = new List<string>();
 
-                                IdList.Add(musics.Id.ToString());
+                                await ctx.Channel.SendMessageAsync($"Escolha uma das músicas encontradas com o nome {musicName}\n Digite o Id da música desejada");
+
+                                foreach (var musics in getMusics)
+                                {
+                                    await ctx.Channel.SendMessageAsync($" Id: {musics.Id} - \n Nome: {musics.Name}\n Url: {musics.Url}\n ---------------");
+
+                                    IdList.Add(musics.Id.ToString());
+                                }
+
+                                var responseMessageInTheList = await ctx.Message.GetNextMessageAsync(m =>
+                                {
+                                    foreach (var Idmusics in IdList)
+                                    {
+                                        if (m.Content == Idmusics)
+                                        {
+                                            return true;
+                                        }
+                                    }
+
+                                    return false;
+                                });
+
+
+                                if (!responseMessageInTheList.TimedOut)
+                                {
+
+                                    if (conn.CurrentState.CurrentTrack != null)
+                                    {
+                                        AddMusicInTheQueue(ctx, node, musicName, queueList);
+                                        return;
+                                    }
+
+                                    var id = new ObjectId(responseMessageInTheList.Result.Content);
+                                    var getMusicById = await _mongoContext.Musics.FirstOrDefaultAsync(x => x.Id == id);
+
+                                    var uriId = new Uri(getMusicById.Url);
+                                    PlayMusicWithUrlAsync(ctx, node, conn, uriId);
+
+                                    return;
+                                }
+
+                                await ctx.Channel.SendMessageAsync("Tempo de resposta excedido");
+                                
                             }
 
-                            var responseMessageInTheList = await ctx.Message.GetNextMessageAsync( m =>
+                            if (conn.CurrentState.CurrentTrack != null)
                             {
-                                foreach (var Idmusics in IdList)
-                                {
-                                    if (m.Content == Idmusics)
-                                    {
-                                        return true;
-                                    }
-                                }
-                                
-                                return false;
-                            });
-
-
-                            if (!responseMessageInTheList.TimedOut)
-                            {
-                                var id = new ObjectId(responseMessageInTheList.Result.Content);
-                                var getMusicById = await _mongoContext.Musics.FirstOrDefaultAsync(x => x.Id == id);
-
-                                var uriId = new Uri(getMusicById.Url);
-                                PlayMusicWithUrlAsync(ctx, node, conn, uriId);
-
+                                AddMusicInTheQueue(ctx, node, musicName, queueList);
                                 return;
                             }
 
+                            var uri = new Uri(getMusics[0].Url);
+
+                            PlayMusicWithUrlAsync(ctx, node, conn, uri);
+                            return;
                         }
 
-                        var uri = new Uri(getMusics[0].Url);
 
-                        PlayMusicWithUrlAsync(ctx, node, conn, uri);
-                        return;
                     }
+
                 }
 
-            }
+                if (conn.CurrentState.CurrentTrack != null)
+                {
+                    AddMusicInTheQueue(ctx, node, musicName, queueList);
+                    return;
+                }
 
-             PlayMusicAsync(ctx, node, conn, musicName);
+                PlayMusicAsync(ctx, node, conn, musicName);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                return;
+            }
 
         }
 
@@ -209,21 +293,29 @@ namespace Bot_PLayer_Tauz_2._0.Modules
         [Aliases("purl")]
         public async Task PlayTrackWithUrl(CommandContext ctx, Uri url)
         {
+            try
+            {
+                var lavaClient = ctx.Client.GetLavalink();
+                var node = lavaClient.ConnectedNodes.Values.First();
+                var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
 
-            var lavaClient = ctx.Client.GetLavalink();
-            var node = lavaClient.ConnectedNodes.Values.First();
-            var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
+                if (!await ValidatePlayTrackAsync(ctx, conn)) return;
 
-            if (!await ValidatePlayTrackAsync(ctx, conn)) return;
+                var loadResult = await node.Rest.GetTracksAsync(url);
 
-            var loadResult = await node.Rest.GetTracksAsync(url);
+                if (!await ValidateTrackWithUrlAsync(ctx, loadResult, url)) return;
 
-            if (!await ValidateTrackWithUrlAsync(ctx, loadResult, url)) return;
+                var track = loadResult.Tracks.First();
 
-            var track = loadResult.Tracks.First();
-
-            await conn.PlayAsync(track);
-            await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: " + track.Uri);
+                await conn.PlayAsync(track);
+                await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: " + track.Uri);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                return;
+            }
 
         }
 
@@ -231,26 +323,45 @@ namespace Bot_PLayer_Tauz_2._0.Modules
         [Aliases("pa")]
         public async Task PauseAsync(CommandContext ctx)
         {
-            var lavaClient = ctx.Client.GetLavalink();
-            var node = lavaClient.ConnectedNodes.Values.First();
-            var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
+            try
+            {
+                var lavaClient = ctx.Client.GetLavalink();
+                var node = lavaClient.ConnectedNodes.Values.First();
+                var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
 
-            if(!await ValidatePauseResumeAsync(ctx, conn)) return;
+                if (!await ValidatePauseResumeAsync(ctx, conn)) return;
 
-            await conn.PauseAsync();
+                await conn.PauseAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                return;
+            }
         }
 
         [Command("Resume")]
         [Aliases("re")]
         public async Task ResumeAsync(CommandContext ctx)
         {
-            var lavaClient = ctx.Client.GetLavalink();
-            var node = lavaClient.ConnectedNodes.Values.First();
-            var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
+            try
+            {
+                var lavaClient = ctx.Client.GetLavalink();
+                var node = lavaClient.ConnectedNodes.Values.First();
+                var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
 
-            if (!await ValidatePauseResumeAsync(ctx, conn)) return;
+                if (!await ValidatePauseResumeAsync(ctx, conn)) return;
 
-            await conn.ResumeAsync();
+                await conn.ResumeAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+
+                return;
+            }
 
         }
 
@@ -280,6 +391,36 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
             await conn.PlayAsync(track);
             await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: " + track.Uri);
+        }
+
+        private async void AddMusicInTheQueue(CommandContext ctx ,LavalinkNodeConnection node, string musicName, List<MusicModel> queueList)
+        {
+            var loadResult = await node.Rest.GetTracksAsync(musicName);
+
+            if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
+
+            var track = loadResult.Tracks.First();
+
+            var model = new MusicModel()
+            {
+                Name = track.Title,
+                Url = track.Uri.ToString()
+            };
+
+            await ctx.Channel.SendMessageAsync("Adicionando música á lista de música em espera");
+            queueList.Add(model);
+            await ctx.Channel.SendMessageAsync("Sucesso!");
+
+            await ctx.Channel.SendMessageAsync("Buscando lista de espera...");
+
+            await Task.Delay(4000);
+
+            int count = 0;
+            foreach (var queue in queueList)
+            {
+                count++;
+                await ctx.Channel.SendMessageAsync($"- {count} Nome: {queue.Name}\n");
+            }
         }
 
         #endregion
@@ -351,6 +492,18 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             if (conn == null)
             {
                 await ctx.Channel.SendMessageAsync("LavaLink nao está conectado");
+                return false;
+            }
+
+            return true;
+        }
+
+        private async ValueTask<bool> ValidateIfUserInTheChannel(CommandContext ctx)
+        {
+            if (ctx.Member.VoiceState == null || ctx.Member.VoiceState.Channel == null)
+            {
+                await ctx.Channel.SendMessageAsync("É necessário estar em um canal de voz");
+
                 return false;
             }
 
