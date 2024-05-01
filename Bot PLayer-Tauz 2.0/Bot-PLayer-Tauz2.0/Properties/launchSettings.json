@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Bot PLayer-Tauz 2.0": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

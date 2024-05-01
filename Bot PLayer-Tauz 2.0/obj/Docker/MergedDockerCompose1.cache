@@ -1,0 +1,71 @@
+name: dockercompose15919030067351287631
+services:
+  botplayer-tauz2.0:
+    build:
+      context: E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0
+      dockerfile: Bot-PLayer-Tauz2.0/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Bot PLayer-Tauz 2.0
+      target: base
+    container_name: Bot_PLayer-Tauz_2.0
+    entrypoint:
+      - tail
+      - -f
+      - /dev/null
+    environment:
+      NUGET_FALLBACK_PACKAGES: ""
+    image: botplayertauz20:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages  "/app/bin/Debug/net8.0/Bot PLayer-Tauz 2.0.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    tty: true
+    volumes:
+      - type: bind
+        source: E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: E:\Program Files\vs code\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\TokenService.Proxy\linux-x64\net6.0
+        target: /TokenService.Proxy
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: E:\Program Files\vs code\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\HotReloadProxy\linux-x64\net8.0
+        target: /HotReloadProxy
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: E:\Program Files\vs code\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\User\.nuget\packages\
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose15919030067351287631_default

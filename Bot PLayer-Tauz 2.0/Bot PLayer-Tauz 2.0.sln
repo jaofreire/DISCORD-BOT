@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot PLayer-Tauz 2.0", "Bot PLayer-Tauz 2.0\Bot PLayer-Tauz 2.0.csproj", "{0C243E9F-9592-47C5-B373-45590193A099}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHostExtensions", "WebHost.Extensions\WebHostExtensions.csproj", "{EE624D4B-D77C-4949-A113-1E03077D53B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiTests", "ApiTests", "{BDD32FCD-78E5-4034-848D-BF69F29B9E6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestMongoDb", "ApiTestMongoDb\ApiTestMongoDb.csproj", "{C02CBFC6-4453-4497-84D3-037C1C9BDC20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTestMongoDb", "ApiTestMongoDb\ApiTestMongoDb.csproj", "{C02CBFC6-4453-4497-84D3-037C1C9BDC20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot PLayer-Tauz 2.0", "Bot-PLayer-Tauz2.0\Bot PLayer-Tauz 2.0.csproj", "{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B3DEFEF7-C590-4317-8CBF-95AD04215DC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0C243E9F-9592-47C5-B373-45590193A099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C243E9F-9592-47C5-B373-45590193A099}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C243E9F-9592-47C5-B373-45590193A099}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C243E9F-9592-47C5-B373-45590193A099}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE624D4B-D77C-4949-A113-1E03077D53B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE624D4B-D77C-4949-A113-1E03077D53B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE624D4B-D77C-4949-A113-1E03077D53B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,6 +27,14 @@ Global
 		{C02CBFC6-4453-4497-84D3-037C1C9BDC20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C02CBFC6-4453-4497-84D3-037C1C9BDC20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C02CBFC6-4453-4497-84D3-037C1C9BDC20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3DEFEF7-C590-4317-8CBF-95AD04215DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3DEFEF7-C590-4317-8CBF-95AD04215DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3DEFEF7-C590-4317-8CBF-95AD04215DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3DEFEF7-C590-4317-8CBF-95AD04215DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  botplayer-tauz2.0:
+    image: jaofreire/bot-playertauz-image:dev
+    container_name: "Bot_PLayer-Tauz_2.0"
+    build:
+      args:
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Bot PLayer-Tauz 2.0"
+    environment:
+      - NUGET_FALLBACK_PACKAGES=
+    volumes:
+      - E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0:/app
+      - E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0:/src
+      - C:\Users\User\vsdbg\vs2017u5:/remote_debugger:rw
+      - E:\Program Files\vs code\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\TokenService.Proxy\linux-x64\net6.0:/TokenService.Proxy:ro
+      - E:\Program Files\vs code\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\HotReloadProxy\linux-x64\net8.0:/HotReloadProxy:ro
+      - E:\Program Files\vs code\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+      - C:\Users\User\.nuget\packages\:/.nuget/packages:ro
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages  \"/app/bin/Debug/net8.0/Bot PLayer-Tauz 2.0.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
