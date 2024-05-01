@@ -13,16 +13,28 @@ class Program
     {
         var builder = Host.CreateApplicationBuilder();
 
-        var discordClient = builder.Services.AddDiscordClientServices(builder.Configuration, builder.Configuration["DiscordEnv:Token"]);
+        string state = Environment.GetEnvironmentVariable("State");
+
+        var discordClient = builder.Services.AddDiscordClientServices(builder.Configuration
+            , state == "production" ? builder.Configuration["DiscordEnv:Token"] : builder.Configuration["DiscordEnv:TokenTest"]);
 
         var dependenciesServices = new ServiceCollection()
             .AddDbContext<MongoContext>(options =>
             {
+
+                if(state == "production")
+                {
+                    options.UseMongoDB(Environment.GetEnvironmentVariable("MongoConnectionString"), builder.Configuration["MongoDb:DataBase"]);
+                }
+
                 options.UseMongoDB(builder.Configuration["MongoDb:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
+                
             })
             .BuildServiceProvider();
 
-        builder.Services.AddClientCommandsNext<CommandsModule>(discordClient, builder.Configuration["DiscordEnv:Prefix"], dependenciesServices);
+        builder.Services.AddClientCommandsNext<CommandsModule>(discordClient
+            , state == "production"?builder.Configuration["DiscordEnv:Prefix"] : builder.Configuration["DiscordEnv:PrefixTest"]
+            , dependenciesServices);
 
         var lavaLinkClient = builder.Services.AddLavaLinkServices(discordClient);
 
