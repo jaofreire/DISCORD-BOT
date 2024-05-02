@@ -74,13 +74,13 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
               "version": "[8.0.0, )"
-            },
-            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
-              "target": "Package",
-              "version": "[1.19.6, )"
             },
             "MongoDB.Bson": {
               "target": "Package",
@@ -96,7 +96,7 @@
             },
             "MongoDB.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.0-preview.1, )"
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

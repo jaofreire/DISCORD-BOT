@@ -233,3 +233,7 @@ E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-P
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.pdb
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0\obj\Debug\net8.0\Bot PLayer-Tauz 2.0.genruntimeconfig.cache
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0\obj\Debug\net8.0\ref\Bot PLayer-Tauz 2.0.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0\bin\Debug\net8.0\StackExchange.Redis.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\Bot-PLayer-Tauz2.0\bin\Debug\net8.0\System.IO.Pipelines.dll

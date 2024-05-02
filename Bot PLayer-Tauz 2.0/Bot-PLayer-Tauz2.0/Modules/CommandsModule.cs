@@ -1,5 +1,4 @@
-﻿using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
-using Bot_PLayer_Tauz_2._0.Data;
+﻿using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Data.Models;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
@@ -8,9 +7,12 @@ using DSharpPlus.Entities;
 using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.Lavalink;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using MongoDB.Bson;
-using System.Collections.Generic;
-using System.Xml.Linq;
+using System.Text.Json;
+using ZstdSharp.Unsafe;
+
+
 
 
 
@@ -20,10 +22,15 @@ namespace Bot_PLayer_Tauz_2._0.Modules
     {
 
         private readonly MongoContext _mongoContext;
+        private readonly IDistributedCache _cache;
+        private List<MusicModel> musicListCache { get; set; } = new List<MusicModel>();
 
-        public CommandsModule(MongoContext mongoContext)
+        public CommandsModule(MongoContext mongoContext, IDistributedCache cache)
         {
             _mongoContext = mongoContext;
+            _cache = cache;
+
+
         }
 
 
@@ -375,6 +382,14 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
             var track = loadResult.Tracks.First();
 
+            var model = new MusicModel()
+            {
+                Name = track.Title,
+                Url = track.Uri.ToString()
+            };
+
+            musicListCache.Add(model);
+
             await conn.PlayAsync(track);
             await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: " + track.Uri);
         }
@@ -395,6 +410,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         private async void AddMusicInTheQueue(CommandContext ctx ,LavalinkNodeConnection node, string musicName, List<MusicModel> queueList)
         {
+
             var loadResult = await node.Rest.GetTracksAsync(musicName);
 
             if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
@@ -407,20 +423,31 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 Url = track.Uri.ToString()
             };
 
+            musicListCache.Add(model);
+
+            string musicModelJson = JsonSerializer.Serialize(musicListCache);
+            await _cache.SetStringAsync(ctx.Guild.Id.ToString(), musicModelJson);
+
+            string fetchedMusicModelJson = await _cache.GetStringAsync(ctx.Guild.Id.ToString());
+
+            var fetchedMusicModel = JsonSerializer.Deserialize<List<MusicModel>>(fetchedMusicModelJson);
+
             await ctx.Channel.SendMessageAsync("Adicionando música á lista de música em espera");
-            queueList.Add(model);
+
             await ctx.Channel.SendMessageAsync("Sucesso!");
 
             await ctx.Channel.SendMessageAsync("Buscando lista de espera...");
 
             await Task.Delay(4000);
 
+
             int count = 0;
-            foreach (var queue in queueList)
+            foreach (var musics in fetchedMusicModel)
             {
                 count++;
-                await ctx.Channel.SendMessageAsync($"- {count} Nome: {queue.Name}\n");
+                await ctx.Channel.SendMessageAsync($"- {count}  Nome:{musics.Name}");
             }
+           
         }
 
         #endregion

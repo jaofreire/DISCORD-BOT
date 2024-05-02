@@ -1,6 +1,7 @@
 ﻿using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Modules;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,25 +23,32 @@ class Program
             .AddDbContext<MongoContext>(options =>
             {
 
-                if(state == "production")
+                if (state == "production")
                 {
                     options.UseMongoDB(Environment.GetEnvironmentVariable("MongoConnectionString"), builder.Configuration["MongoDb:DataBase"]);
                 }
 
                 options.UseMongoDB(builder.Configuration["MongoDb:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
-                
+
+            })
+            .AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = builder.Configuration["Redis:ConnectionStrings"];
             })
             .BuildServiceProvider();
 
+ 
+            
+       
         builder.Services.AddClientCommandsNext<CommandsModule>(discordClient
             , state == "production"?builder.Configuration["DiscordEnv:Prefix"] : builder.Configuration["DiscordEnv:PrefixTest"]
             , dependenciesServices);
 
         var lavaLinkClient = builder.Services.AddLavaLinkServices(discordClient);
 
-        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink:Hostname"]
-            , builder.Configuration.GetValue<int>("LavaLink:Port")
-            , builder.Configuration["LavaLink:Password"]);
+        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink2:Hostname"]
+            , builder.Configuration.GetValue<int>("LavaLink2:Port")
+            , builder.Configuration["LavaLink2:Password"]);
 
 
         builder.Services.UseDiscordBotMusicSDK(builder.Configuration, discordClient, lavaLinkClient, lavaLinkConfig);
