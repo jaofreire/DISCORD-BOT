@@ -25,6 +25,7 @@ class Program
                 if(state == "production")
                 {
                     options.UseMongoDB(Environment.GetEnvironmentVariable("MongoConnectionString"), builder.Configuration["MongoDb:DataBase"]);
+                    Console.WriteLine($"Connection String: {Environment.GetEnvironmentVariable("MongoConnectionString")}, DataBase: {builder.Configuration["MongoDb:DataBase"]}");
                 }
 
                 options.UseMongoDB(builder.Configuration["MongoDb:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
@@ -38,9 +39,9 @@ class Program
 
         var lavaLinkClient = builder.Services.AddLavaLinkServices(discordClient);
 
-        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink:Hostname"]
-            , builder.Configuration.GetValue<int>("LavaLink:Port")
-            , builder.Configuration["LavaLink:Password"]);
+        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink2:Hostname"]
+            , builder.Configuration.GetValue<int>("LavaLink2:Port")
+            , builder.Configuration["LavaLink2:Password"]);
 
 
         builder.Services.UseDiscordBotMusicSDK(builder.Configuration, discordClient, lavaLinkClient, lavaLinkConfig);
