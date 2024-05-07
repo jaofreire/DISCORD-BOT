@@ -13,7 +13,7 @@ class Program
     {
         var builder = Host.CreateApplicationBuilder();
 
-        string state = Environment.GetEnvironmentVariable("State");
+        string state = builder.Configuration["ProjectStage"];
 
         var discordClient = builder.Services.AddDiscordClientServices(builder.Configuration
             , state == "production" ? builder.Configuration["DiscordEnv:Token"] : builder.Configuration["DiscordEnv:TokenTest"]);
@@ -21,18 +21,19 @@ class Program
         var dependenciesServices = new ServiceCollection()
             .AddDbContext<MongoContext>(options =>
             {
-
-                if(state == "production")
+                if (state == "production")
                 {
-                    options.UseMongoDB(Environment.GetEnvironmentVariable("MongoConnectionString"), builder.Configuration["MongoDb:DataBase"]);
-                    Console.WriteLine($"Connection String: {Environment.GetEnvironmentVariable("MongoConnectionString")}, DataBase: {builder.Configuration["MongoDb:DataBase"]}");
+                    options.UseMongoDB(builder.Configuration["MongoDbProd:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
+                    Console.WriteLine($"Connection String: {builder.Configuration["MongoDbProd:ConnectionStrings"]}, DataBase: {builder.Configuration["MongoDb:DataBase"]}");
+                }
+                else if(state == "development")
+                {
+                    options.UseMongoDB(builder.Configuration["MongoDb:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
+                    Console.WriteLine($"Connection String: {builder.Configuration["MongoDb:ConnectionStrings"]}, DataBase: {builder.Configuration["MongoDb:DataBase"]}");
                 }
 
-                options.UseMongoDB(builder.Configuration["MongoDb:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
-                
             })
             .BuildServiceProvider();
-
         builder.Services.AddClientCommandsNext<CommandsModule>(discordClient
             , state == "production"?builder.Configuration["DiscordEnv:Prefix"] : builder.Configuration["DiscordEnv:PrefixTest"]
             , dependenciesServices);

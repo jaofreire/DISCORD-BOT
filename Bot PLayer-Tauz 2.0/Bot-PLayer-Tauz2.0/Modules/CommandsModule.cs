@@ -234,11 +234,11 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                                 if (!responseMessageInTheList.TimedOut)
                                 {
 
-                                    if (conn.CurrentState.CurrentTrack != null)
-                                    {
-                                        AddMusicInTheQueue(ctx, node, musicName, queueList);
-                                        return;
-                                    }
+                                    //if (conn.CurrentState.CurrentTrack != null)
+                                    //{
+                                    //    AddMusicInTheQueue(ctx, node, musicName, queueList);
+                                    //    return;
+                                    //}
 
                                     var id = new ObjectId(responseMessageInTheList.Result.Content);
                                     var getMusicById = await _mongoContext.Musics.FirstOrDefaultAsync(x => x.Id == id);
@@ -253,11 +253,11 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                                 
                             }
 
-                            if (conn.CurrentState.CurrentTrack != null)
-                            {
-                                AddMusicInTheQueue(ctx, node, musicName, queueList);
-                                return;
-                            }
+                            //if (conn.CurrentState.CurrentTrack != null)
+                            //{
+                            //    AddMusicInTheQueue(ctx, node, musicName, queueList);
+                            //    return;
+                            //}
 
                             var uri = new Uri(getMusics[0].Url);
 
@@ -270,11 +270,11 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
                 }
 
-                if (conn.CurrentState.CurrentTrack != null)
-                {
-                    AddMusicInTheQueue(ctx, node, musicName, queueList);
-                    return;
-                }
+                //if (conn.CurrentState.CurrentTrack != null)
+                //{
+                //    AddMusicInTheQueue(ctx, node, musicName, queueList);
+                //    return;
+                //}
 
                 PlayMusicAsync(ctx, node, conn, musicName);
 
