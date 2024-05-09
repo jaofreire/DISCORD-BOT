@@ -1,5 +1,6 @@
 ﻿using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Data.Models;
+using Bot_PLayer_Tauz_2._0.Wrappers;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
@@ -10,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using MongoDB.Bson;
 using System.Text.Json;
-using ZstdSharp.Unsafe;
 
 
 
@@ -23,13 +23,14 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         private readonly MongoContext _mongoContext;
         private readonly IDistributedCache _cache;
+        private readonly LavaLinkConnectionManager _connectionManager;
         private List<MusicModel> musicListCache { get; set; } = new List<MusicModel>();
 
-        public CommandsModule(MongoContext mongoContext, IDistributedCache cache)
+        public CommandsModule(MongoContext mongoContext, IDistributedCache cache, LavaLinkConnectionManager connetionManager)
         {
             _mongoContext = mongoContext;
             _cache = cache;
-
+            _connectionManager = connetionManager;
 
         }
 
@@ -190,6 +191,9 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 var lavaClient = ctx.Client.GetLavalink();
                 var node = lavaClient.ConnectedNodes.Values.First();
                 var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
+
+                _connectionManager.AddConnection(ctx.Guild.Id, conn);
+               
 
                 List<MusicModel> queueList = new List<MusicModel>();
 
@@ -372,6 +376,31 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         }
 
+        [Command("Stop")]
+        [Aliases("st")]
+        public async Task StopAsync(CommandContext ctx)
+        {
+            try
+            {
+                var lavaClient = ctx.Client.GetLavalink();
+                var node = lavaClient.ConnectedNodes.Values.First();
+                var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
+
+                if (!await ValidateStopAsync(ctx, conn)) return;
+
+                await conn.StopAsync();
+
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+
+                return;
+            }
+        }
+
         private async void PlayMusicAsync(CommandContext ctx, LavalinkNodeConnection node, LavalinkGuildConnection conn, string musicName)
         {
             if (!await ValidatePlayTrackAsync(ctx, conn)) return;
@@ -412,6 +441,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
         {
 
             var loadResult = await node.Rest.GetTracksAsync(musicName);
+
 
             if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
 
@@ -560,6 +590,29 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             return true;
         }
 
+        private async ValueTask<bool> ValidateStopAsync(CommandContext ctx, LavalinkGuildConnection conn)
+        {
+            if (ctx.Member.VoiceState == null || ctx.Member.VoiceState.Channel == null)
+            {
+                await ctx.Channel.SendMessageAsync("É necessário estar em um canal de voz");
+                return false;
+            }
+
+            if (conn == null)
+            {
+                await ctx.Channel.SendMessageAsync("LavaLink não esta conectado");
+                return false;
+            }
+
+            if (conn.CurrentState.CurrentTrack == null)
+            {
+                await ctx.Channel.SendMessageAsync("Nenhuma música esta tocando");
+                return false;
+            }
+
+            return true;
+        }
+
         private bool ValidateExistMusicWithName(CommandContext ctx, List<MusicModel> musicList)
         {
             if (!musicList.Any())
@@ -610,5 +663,6 @@ namespace Bot_PLayer_Tauz_2._0.Modules
         }
 
         #endregion
+
     }
 }

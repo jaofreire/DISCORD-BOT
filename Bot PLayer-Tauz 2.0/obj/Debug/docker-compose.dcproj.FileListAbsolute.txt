@@ -1,0 +1,64 @@
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Bot PLayer-Tauz 2.0.deps.json
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Bot PLayer-Tauz 2.0.runtimeconfig.json
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\appsettings.json
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Bot PLayer-Tauz 2.0.exe
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Bot PLayer-Tauz 2.0.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Hosting.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.EntityFrameworkCore.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\DSharpPlus.Lavalink.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\DSharpPlus.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Hosting.Abstractions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\DSharpPlus.CommandsNext.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\MongoDB.Bson.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\DSharpPlus.Interactivity.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\MongoDB.EntityFrameworkCore.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Configuration.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\WebHostExtensions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.FileProviders.Physical.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Diagnostics.Abstractions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Logging.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Options.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Diagnostics.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Configuration.Json.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Configuration.UserSecrets.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Configuration.CommandLine.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Logging.EventLog.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Logging.Configuration.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Logging.Console.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Logging.Debug.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Logging.EventSource.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\StackExchange.Redis.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Newtonsoft.Json.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Primitives.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\ConcurrentCollections.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\MongoDB.Driver.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\MongoDB.Driver.Core.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\DSharpPlus.SlashCommands.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\System.Diagnostics.EventLog.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Pipelines.Sockets.Unofficial.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\System.IO.Pipelines.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\MongoDB.Libmongocrypt.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\DnsClient.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\SharpCompress.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\ZstdSharp.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\AWSSDK.Core.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Snappier.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Bot PLayer-Tauz 2.0.pdb
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\WebHostExtensions.pdb
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\obj\Debug\docker-c.35A3FFBA.Up2Date
