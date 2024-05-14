@@ -1,6 +1,8 @@
-﻿using Bot_PLayer_Tauz_2._0.Modules;
+﻿using Bot_PLayer_Tauz_2._0.Data.Models;
 using DSharpPlus.Lavalink;
 using DSharpPlus.Lavalink.EventArgs;
+using Microsoft.Extensions.Caching.Distributed;
+using System.Text.Json;
 
 
 namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
@@ -8,11 +10,14 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
     public class LavaLinkEvents
     {
         public LavalinkGuildConnection? _guildConnection { get; set; }
+        private readonly IDistributedCache _cache;
+
         private int musiCount = 0;
 
-        public LavaLinkEvents(LavalinkGuildConnection guildConnection)
+        public LavaLinkEvents(LavalinkGuildConnection guildConnection, IDistributedCache cache)
         {
             _guildConnection = guildConnection;
+            _cache = cache;
             _guildConnection.PlaybackFinished += OnPlayBackFinished;
             
         }
@@ -28,36 +33,48 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
 
                 Console.WriteLine("FIM DA MÚSICA!!");
 
-                var musicQueue = CommandsModule.musicListCache;
+                var queueJson = await _cache.GetStringAsync(sender.Guild.Id.ToString());
+
+                var musicQueue = JsonSerializer.Deserialize<List<MusicModel>>(queueJson);
 
 
                 if (musicQueue.Count > 1)
                 {
+                    var loudResult = await node.Rest.GetTracksAsync(musicQueue[0].Name);
+
+                    if (loudResult.LoadResultType == LavalinkLoadResultType.LoadFailed || loudResult.LoadResultType == LavalinkLoadResultType.NoMatches)
+                        return;
+                   
+
                     musicQueue.Remove(musicQueue[0]);
 
-                    int count = 0;
-                    foreach (var musics in musicQueue)
-                    {
-                        count++;
-                        await sender.Channel.SendMessageAsync($"- {count}  Nome:{musics.Name}");
-                    }
+                    queueJson = JsonSerializer.Serialize(musicQueue);
+                    await _cache.SetStringAsync(sender.Guild.Id.ToString(), queueJson);
 
-                    await Task.Delay(4000);
-
-                    var loudResult = node.Rest.GetTracksAsync(musicQueue[0].Name);
-
-                    if (loudResult.Result.LoadResultType == LavalinkLoadResultType.LoadFailed || loudResult.Result.LoadResultType == LavalinkLoadResultType.NoMatches)
-                    {
-                        await sender.Channel.SendMessageAsync("Ocorreu um erro ao buscar a música da lista!");
-                        return;
-                    }
-
-                    var track = loudResult.Result.Tracks.First();
+                    var track = loudResult.Tracks.First();
 
                     await sender.PlayAsync(track);
+
                 }
+                else if (musicQueue.Count == 1)
+                {
 
+                    var loudResult = await node.Rest.GetTracksAsync(musicQueue[0].Name);
 
+                    if (loudResult.LoadResultType == LavalinkLoadResultType.LoadFailed || loudResult.LoadResultType == LavalinkLoadResultType.NoMatches)
+                        return;
+                    
+                    musicQueue.Remove(musicQueue[0]);
+
+                    var track = loudResult.Tracks.First();
+
+                    await sender.PlayAsync(track);
+
+                    queueJson = JsonSerializer.Serialize(musicQueue);
+                    await _cache.SetStringAsync(sender.Guild.Id.ToString(), queueJson);
+
+                    return;
+                }
 
             }
             catch (Exception ex)

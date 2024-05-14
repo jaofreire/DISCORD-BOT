@@ -78,9 +78,9 @@ class Program
 
         var lavaLinkClient = discordClient.UseLavalink();
 
-        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink1:Hostname"]
-            , builder.Configuration.GetValue<int>("LavaLink1:Port")
-            , builder.Configuration["LavaLink1:Password"]);
+        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink2:Hostname"]
+            , builder.Configuration.GetValue<int>("LavaLink2:Port")
+            , builder.Configuration["LavaLink2:Password"]);
 
 
 
