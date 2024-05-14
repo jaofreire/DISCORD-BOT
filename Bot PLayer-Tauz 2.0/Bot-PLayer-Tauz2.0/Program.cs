@@ -14,10 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
 using WebHostExtensions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using DSharpPlus.Interactivity.Extensions;
+using Bot_PLayer_Tauz_2._0.Wrappers.EventHandler;
 
 
 class Program
@@ -35,6 +34,8 @@ class Program
             Intents = DiscordIntents.All,
             MinimumLogLevel = LogLevel.Debug
         });
+
+
 
         var dependenciesServices = new ServiceCollection()
             .AddDbContext<MongoContext>(options =>
@@ -54,10 +55,11 @@ class Program
             {
                 options.Configuration = builder.Configuration["Redis:ConnectionStrings"];
             })
-            .AddSingleton<LavaLinkConnectionManager>()
+            .AddSingleton<DiscordClientEvents>()
             .BuildServiceProvider();
 
 
+        discordClient.Ready += DiscordClientEvents.IsReady;
 
         var commands = discordClient.UseCommandsNext(new CommandsNextConfiguration()
         {
@@ -76,9 +78,9 @@ class Program
 
         var lavaLinkClient = discordClient.UseLavalink();
 
-        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink2:Hostname"]
-            , builder.Configuration.GetValue<int>("LavaLink2:Port")
-            , builder.Configuration["LavaLink2:Password"]);
+        var lavaLinkConfig = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink1:Hostname"]
+            , builder.Configuration.GetValue<int>("LavaLink1:Port")
+            , builder.Configuration["LavaLink1:Password"]);
 
 
 
@@ -93,6 +95,5 @@ class Program
 
     }
 
-    
 }
 

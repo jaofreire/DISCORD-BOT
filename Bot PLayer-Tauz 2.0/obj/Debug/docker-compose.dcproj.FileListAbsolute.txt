@@ -45,7 +45,6 @@ E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\D
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\ConcurrentCollections.dll
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\MongoDB.Driver.dll
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\MongoDB.Driver.Core.dll
-E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\DSharpPlus.SlashCommands.dll
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.dll
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\System.Diagnostics.EventLog.dll
