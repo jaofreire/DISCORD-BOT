@@ -7,16 +7,12 @@
       "RelativeMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot-player-tauz2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3DEFEF7-C590-4317-8CBF-95AD04215DC1}|docker-compose.dcproj|e:\\estudo c#\\bot playertauz-repository 3.0\\discord-bot\\bot player-tauz 2.0\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B3DEFEF7-C590-4317-8CBF-95AD04215DC1}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\bot playertauz-repository 3.0\\discord-bot\\bot player-tauz 2.0\\bot-player-tauz2.0\\modules\\commandsmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot-player-tauz2.0\\modules\\commandsmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\bot playertauz-repository 3.0\\discord-bot\\bot player-tauz 2.0\\bot-player-tauz2.0\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot-player-tauz2.0\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\bot playertauz-repository 3.0\\discord-bot\\bot player-tauz 2.0\\bot-player-tauz2.0\\prod.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot-player-tauz2.0\\prod.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,34 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\appsettings.json",
-              "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\appsettings.json",
-              "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\appsettings.json",
-              "RelativeToolTip": "Bot-PLayer-Tauz2.0\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-07T11:10:00.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "prod.env",
-              "DocumentMoniker": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\prod.env",
-              "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\prod.env",
-              "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\prod.env",
-              "RelativeToolTip": "Bot-PLayer-Tauz2.0\\prod.env",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-07T10:42:58.96Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -67,17 +37,8 @@
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "docker-compose.yml",
-              "DocumentMoniker": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\docker-compose.yml",
-              "RelativeDocumentMoniker": "docker-compose.yml",
-              "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\docker-compose.yml",
-              "RelativeToolTip": "docker-compose.yml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2024-05-03T16:00:31.76Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Document",
@@ -87,10 +48,35 @@
               "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\Program.cs",
               "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Program.cs",
               "RelativeToolTip": "Bot-PLayer-Tauz2.0\\Program.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAswCEAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T00:26:05.741Z",
+              "WhenOpened": "2024-05-14T16:58:06.048Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CommandsModule.cs",
+              "DocumentMoniker": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Modules\\CommandsModule.cs",
+              "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\Modules\\CommandsModule.cs",
+              "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Modules\\CommandsModule.cs",
+              "RelativeToolTip": "Bot-PLayer-Tauz2.0\\Modules\\CommandsModule.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T18:10:50.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\appsettings.json",
+              "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\appsettings.json",
+              "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\appsettings.json",
+              "RelativeToolTip": "Bot-PLayer-Tauz2.0\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-14T12:50:47.255Z"
             }
           ]
         }
