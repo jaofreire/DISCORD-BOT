@@ -4,9 +4,47 @@ services:
     build:
       context: E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0
       dockerfile: Bot-PLayer-Tauz2.0/Dockerfile
-    image: botplayertauz20
+    container_name: bot-container
+    depends_on:
+      mongodb:
+        condition: service_started
+        required: true
+    environment:
+      ConnectionString: mongodb://rostname:password@mongo-container:27017/Musics
+      State: production
+    image: jaofreire/bot-playertauz-image:latest
+    networks:
+      net-bot: null
+  mongo-express:
+    container_name: mongoexpress-container
+    environment:
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_ADMINUSERNAME: rostname
+      ME_CONFIG_MONGODB_URL: mongodb://rostname:password@mongo-container:27017/
+    image: mongo-express:latest
     networks:
       default: null
+    ports:
+      - mode: ingress
+        target: 8081
+        published: "8081"
+        protocol: tcp
+  mongodb:
+    container_name: mongo-container
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: rostname
+    image: mongo:latest
+    networks:
+      net-bot: null
+    ports:
+      - mode: ingress
+        target: 27017
+        published: "27017"
+        protocol: tcp
 networks:
   default:
     name: dockercompose15919030067351287631_default
+  net-bot:
+    name: dockercompose15919030067351287631_net-bot
+    driver: bridge

@@ -1,6 +1,6 @@
-﻿using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
-using Bot_PLayer_Tauz_2._0.Data;
+﻿using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Data.Models;
+using Bot_PLayer_Tauz_2._0.Wrappers.EventHandler;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
@@ -8,9 +8,11 @@ using DSharpPlus.Entities;
 using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.Lavalink;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using MongoDB.Bson;
-using System.Collections.Generic;
-using System.Xml.Linq;
+using System.Text.Json;
+
+
 
 
 
@@ -20,10 +22,17 @@ namespace Bot_PLayer_Tauz_2._0.Modules
     {
 
         private readonly MongoContext _mongoContext;
+        private readonly IDistributedCache _cache;
+        public static List<MusicModel>? musicListCache { get; set; }
+        public LavaLinkEvents? lavaLinkEvents { get; set; }
 
-        public CommandsModule(MongoContext mongoContext)
+        public CommandsModule(MongoContext mongoContext, IDistributedCache cache)
         {
             _mongoContext = mongoContext;
+            _cache = cache;
+
+            musicListCache = new List<MusicModel>();
+ 
         }
 
 
@@ -42,6 +51,12 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
                 await lavaNode.ConnectAsync(voiceChannel);
                 await ctx.Channel.SendMessageAsync("Join " + voiceChannel.Name);
+
+                var listInitializate = new List<MusicModel>();
+
+                var listJson = JsonSerializer.Serialize(listInitializate);
+
+                await _cache.SetStringAsync(ctx.Guild.Id.ToString(), listJson);
             }
             catch(Exception ex)
             {
@@ -66,6 +81,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
                 await conn.DisconnectAsync();
                 await ctx.Channel.SendMessageAsync("Leave " + voiceChannel.Name);
+
             }
             catch (Exception ex)
             {
@@ -184,7 +200,13 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 var node = lavaClient.ConnectedNodes.Values.First();
                 var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
 
-                List<MusicModel> queueList = new List<MusicModel>();
+                if (conn == null)
+                {
+                    await ctx.Channel.SendMessageAsync("É necessário estar em um canal de voz");
+                    return;
+                }
+
+                if (conn.CurrentState.CurrentTrack == null) lavaLinkEvents = new LavaLinkEvents(conn, _cache);
 
                 var getMusics = await _mongoContext.Musics.Where(x => x.Name.Contains(musicName)).ToListAsync();
 
@@ -234,11 +256,11 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                                 if (!responseMessageInTheList.TimedOut)
                                 {
 
-                                    //if (conn.CurrentState.CurrentTrack != null)
-                                    //{
-                                    //    AddMusicInTheQueue(ctx, node, musicName, queueList);
-                                    //    return;
-                                    //}
+                                    if (conn.CurrentState.CurrentTrack != null)
+                                    {
+                                        AddMusicInTheQueue(ctx, node, conn, musicName);
+                                        return;
+                                    }
 
                                     var id = new ObjectId(responseMessageInTheList.Result.Content);
                                     var getMusicById = await _mongoContext.Musics.FirstOrDefaultAsync(x => x.Id == id);
@@ -253,11 +275,11 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                                 
                             }
 
-                            //if (conn.CurrentState.CurrentTrack != null)
-                            //{
-                            //    AddMusicInTheQueue(ctx, node, musicName, queueList);
-                            //    return;
-                            //}
+                            if (conn.CurrentState.CurrentTrack != null)
+                            {
+                                AddMusicInTheQueue(ctx, node, conn, musicName);
+                                return;
+                            }
 
                             var uri = new Uri(getMusics[0].Url);
 
@@ -270,11 +292,11 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
                 }
 
-                //if (conn.CurrentState.CurrentTrack != null)
-                //{
-                //    AddMusicInTheQueue(ctx, node, musicName, queueList);
-                //    return;
-                //}
+                if (conn.CurrentState.CurrentTrack != null)
+                {
+                    AddMusicInTheQueue(ctx, node, conn, musicName);
+                    return;
+                }
 
                 PlayMusicAsync(ctx, node, conn, musicName);
 
@@ -365,6 +387,33 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         }
 
+        [Command("Stop")]
+        [Aliases("st")]
+        public async Task StopAsync(CommandContext ctx)
+        {
+            try
+            {
+                var lavaClient = ctx.Client.GetLavalink();
+                var node = lavaClient.ConnectedNodes.Values.First();
+                var conn = node.GetGuildConnection(ctx.Member.VoiceState.Guild);
+
+                if (!await ValidateStopAsync(ctx, conn)) return;
+
+                await conn.StopAsync();
+
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+
+                return;
+            }
+        }
+
+
+
         private async void PlayMusicAsync(CommandContext ctx, LavalinkNodeConnection node, LavalinkGuildConnection conn, string musicName)
         {
             if (!await ValidatePlayTrackAsync(ctx, conn)) return;
@@ -374,6 +423,14 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
 
             var track = loadResult.Tracks.First();
+
+            var model = new MusicModel()
+            {
+                Name = track.Title,
+                Url = track.Uri.ToString()
+            };
+
+            musicListCache.Add(model);
 
             await conn.PlayAsync(track);
             await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: " + track.Uri);
@@ -393,9 +450,11 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             await ctx.Channel.SendMessageAsync("Tocando " + track.Title + " url: " + track.Uri);
         }
 
-        private async void AddMusicInTheQueue(CommandContext ctx ,LavalinkNodeConnection node, string musicName, List<MusicModel> queueList)
+        private async void AddMusicInTheQueue(CommandContext ctx ,LavalinkNodeConnection node, LavalinkGuildConnection conn, string musicName)
         {
+
             var loadResult = await node.Rest.GetTracksAsync(musicName);
+
 
             if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
 
@@ -407,20 +466,149 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 Url = track.Uri.ToString()
             };
 
-            await ctx.Channel.SendMessageAsync("Adicionando música á lista de música em espera");
-            queueList.Add(model);
-            await ctx.Channel.SendMessageAsync("Sucesso!");
+            var queueJson = await _cache.GetStringAsync(ctx.Guild.Id.ToString());
 
-            await ctx.Channel.SendMessageAsync("Buscando lista de espera...");
-
-            await Task.Delay(4000);
-
-            int count = 0;
-            foreach (var queue in queueList)
+            if (queueJson == null)
             {
-                count++;
-                await ctx.Channel.SendMessageAsync($"- {count} Nome: {queue.Name}\n");
+                await ctx.Channel.SendMessageAsync("Não há nenhuma lista de espera");
+                return;
             }
+
+            var queue = JsonSerializer.Deserialize<List<MusicModel>>(queueJson);
+
+            if (queue.Count == 0)
+            {
+                musicListCache.Clear();
+                queue = musicListCache;
+                queue.Add(model);
+
+                var queueJsonSerialize = JsonSerializer.Serialize(queue);
+
+                await _cache.SetStringAsync(ctx.Guild.Id.ToString(), queueJsonSerialize);
+
+                await ctx.Channel.SendMessageAsync("Adicionando música á lista de música em espera");
+
+                await ctx.Channel.SendMessageAsync("Sucesso!");
+
+                await ctx.Channel.SendMessageAsync("Buscando lista de espera...");
+
+                await Task.Delay(4000);
+                int countIfEqualZero = 0;
+                foreach (var musics in queue)
+                {
+                    countIfEqualZero++;
+                    await ctx.Channel.SendMessageAsync($"- {countIfEqualZero}  Nome: {musics.Name}");
+                }
+
+                return;
+            }
+
+            if (queue.Count >= 1)
+            {
+                queueJson = await _cache.GetStringAsync(ctx.Guild.Id.ToString());
+                queue = JsonSerializer.Deserialize<List<MusicModel>>(queueJson);
+
+                queue.Add(model);
+
+                await ctx.Channel.SendMessageAsync("Adicionando música á lista de música em espera");
+
+                await ctx.Channel.SendMessageAsync("Sucesso!");
+
+                await ctx.Channel.SendMessageAsync("Buscando lista de espera...");
+
+                await Task.Delay(4000);
+
+                int countIfMoreThanOne = 0;
+                foreach (var musics in queue)
+                {
+                    countIfMoreThanOne++;
+                    await ctx.Channel.SendMessageAsync($"- {countIfMoreThanOne}  Nome: {musics.Name}");
+                }
+
+                queueJson = JsonSerializer.Serialize(queue);
+
+                await _cache.SetStringAsync(ctx.Guild.Id.ToString(), queueJson);
+
+                return;
+            }
+           
+        }
+
+        #endregion
+
+        #region QUEUE HANDLER
+
+        [Command("Queue")]
+        [Aliases("q")]
+        public async Task ShowQueueAsync(CommandContext ctx)
+        {
+            try
+            {
+                var queueJson = await _cache.GetStringAsync(ctx.Guild.Id.ToString());
+
+                if (queueJson == null)
+                {
+                    await ctx.Channel.SendMessageAsync("Não há nenhuma lista de espera");
+                    return;
+                }
+
+                var queue = JsonSerializer.Deserialize<List<MusicModel>>(queueJson);
+
+                if (queue.Count == 0)
+                {
+                    await ctx.Channel.SendMessageAsync("Lista de espera vazia");
+                    return;
+                }
+
+                await ctx.Channel.SendMessageAsync("Listando...");
+
+                await Task.Delay(4000);
+
+                int count = 0;
+                foreach (var musics in queue)
+                {
+                    count++;
+                    await ctx.Channel.SendMessageAsync($"- {count}  Nome: {musics.Name}");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+
+                return;
+            }
+        }
+
+        [Command("ClearQueue")]
+        [Aliases("cq")]
+        public async Task ClearQueue(CommandContext ctx)
+        {
+            var queueJson = await _cache.GetStringAsync(ctx.Guild.Id.ToString());
+
+            if (queueJson == null)
+            {
+                await ctx.Channel.SendMessageAsync("Não há nenhuma lista de espera");
+                return;
+            }
+
+            var queue = JsonSerializer.Deserialize<List<MusicModel>>(queueJson);
+
+            if (queue.Count == 0 || queue == null)
+            {
+                await ctx.Channel.SendMessageAsync("Não há musicas listadas");
+                return;
+            }
+
+            await ctx.Channel.SendMessageAsync("Removando TODAS as músicas da lista de espera");
+
+            queue.Clear();
+
+            var queueCleardJson = JsonSerializer.Serialize(queue);
+
+            await _cache.SetStringAsync(ctx.Guild.Id.ToString(), queueCleardJson);
         }
 
         #endregion
@@ -533,6 +721,29 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             return true;
         }
 
+        private async ValueTask<bool> ValidateStopAsync(CommandContext ctx, LavalinkGuildConnection conn)
+        {
+            if (ctx.Member.VoiceState == null || ctx.Member.VoiceState.Channel == null)
+            {
+                await ctx.Channel.SendMessageAsync("É necessário estar em um canal de voz");
+                return false;
+            }
+
+            if (conn == null)
+            {
+                await ctx.Channel.SendMessageAsync("LavaLink não esta conectado");
+                return false;
+            }
+
+            if (conn.CurrentState.CurrentTrack == null)
+            {
+                await ctx.Channel.SendMessageAsync("Nenhuma música esta tocando");
+                return false;
+            }
+
+            return true;
+        }
+
         private bool ValidateExistMusicWithName(CommandContext ctx, List<MusicModel> musicList)
         {
             if (!musicList.Any())
@@ -583,5 +794,6 @@ namespace Bot_PLayer_Tauz_2._0.Modules
         }
 
         #endregion
+
     }
 }
