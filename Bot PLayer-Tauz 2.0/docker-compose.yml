@@ -1,15 +1,31 @@
 version: '3.4'
 
 services:
+
   botplayer-tauz2.0:
-    container_name: bot-container
+    container_name: bot-container-1
     image: jaofreire/bot-playertauz-image:latest
     # build:
     #   context: .
     #   dockerfile: Bot-PLayer-Tauz2.0/Dockerfile
+    environment:
+     - REDIS_CONNECTION_STRINGS=redis-container
+    depends_on:
+     - mongo
+     - redis
     networks:
      - net-bot
-
+     
+  botplayer-tauz2.0-2:
+    container_name: bot-container-2
+    image: jaofreire/bot-playertauz-image:latest
+    environment:
+     - REDIS_CONNECTION_STRINGS=redis-container
+    depends_on:
+     - mongo
+     - redis
+    networks:
+     - net-bot
 
   mongo:
    container_name: mongo-container
@@ -17,10 +33,21 @@ services:
    restart: always
    ports:
     - 27017:27017
-   env_file:
-    - Bot-PLayer-Tauz2.0/prod.env
+   environment:
+    - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+    - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
    networks:
     - net-bot
+  
+  redis:
+   container_name: redis-container
+   image: redis:latest
+   restart: always
+   ports:
+    - 2010:6379
+   networks:
+    - net-bot
+  
 
 
 

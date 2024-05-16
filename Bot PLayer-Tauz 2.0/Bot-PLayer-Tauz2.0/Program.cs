@@ -53,7 +53,15 @@ class Program
             })
             .AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = builder.Configuration["Redis:ConnectionStrings"];
+                if (state == "production")
+                {
+                    options.Configuration = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRINGS");
+                }
+                else if (state == "development")
+                {
+                    options.Configuration = builder.Configuration["Redis:ConnectionStrings"];
+                }
+                
             })
             .AddSingleton<DiscordClientEvents>()
             .BuildServiceProvider();
