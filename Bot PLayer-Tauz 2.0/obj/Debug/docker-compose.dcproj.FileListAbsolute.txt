@@ -1,1 +1,2 @@
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\bin\Debug\.env

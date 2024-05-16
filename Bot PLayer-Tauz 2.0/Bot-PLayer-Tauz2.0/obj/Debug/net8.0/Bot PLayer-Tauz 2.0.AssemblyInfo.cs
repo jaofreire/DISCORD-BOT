@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bot PLayer-Tauz 2.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1dbb64da12d9fd6858783d75cfc2deecc2a6b863")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a78a921eaf9c07f707fe353fe487170465d3593")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bot PLayer-Tauz 2.0")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bot PLayer-Tauz 2.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
