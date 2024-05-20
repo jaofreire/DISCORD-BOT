@@ -4,10 +4,10 @@ services:
 
   botplayer-tauz2.0:
     container_name: bot-container-1
-    # image: jaofreire/bot-playertauz-image:latest
-    build:
-      context: .
-      dockerfile: Bot-PLayer-Tauz2.0/Dockerfile
+    image: jaofreire/bot-playertauz-image:latest
+    # build:
+    #   context: .
+    #   dockerfile: Bot-PLayer-Tauz2.0/Dockerfile
     environment:
      - REDIS_CONNECTION_STRINGS=redis-container
      - LAVA_LINK_HOST_NAME=${LAVA_LINK_HOST_NAME_PROD}
