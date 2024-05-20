@@ -4,29 +4,19 @@ services:
 
   botplayer-tauz2.0:
     container_name: bot-container-1
-    image: jaofreire/bot-playertauz-image:latest
-    # build:
-    #   context: .
-    #   dockerfile: Bot-PLayer-Tauz2.0/Dockerfile
+    # image: jaofreire/bot-playertauz-image:latest
+    build:
+      context: .
+      dockerfile: Bot-PLayer-Tauz2.0/Dockerfile
     environment:
      - REDIS_CONNECTION_STRINGS=redis-container
-     - LAVA_LINK_HOST_NAME=${LAVA_LINK_HOST_NAME}
-     - LAVA_LINK_PORT=${LAVA_LINK_PORT}
-     - LAVA_LINK_PASSWORD=${LAVA_LINK_PASSWORD}
-    depends_on:
-     - mongo
-     - redis
-    networks:
-     - net-bot
-     
-  botplayer-tauz2.0-2:
-    container_name: bot-container-2
-    image: jaofreire/bot-playertauz-image:latest
-    environment:
-     - REDIS_CONNECTION_STRINGS=redis-container
-     - LAVA_LINK_HOST_NAME=${LAVA_LINK_HOST_NAME2}
-     - LAVA_LINK_PORT=${LAVA_LINK_PORT2}
-     - LAVA_LINK_PASSWORD=${LAVA_LINK_PASSWORD2}
+     - LAVA_LINK_HOST_NAME=${LAVA_LINK_HOST_NAME_PROD}
+     - LAVA_LINK_PORT=${LAVA_LINK_PORT_PROD}
+     - LAVA_LINK_PASSWORD=${LAVA_LINK_PASSWORD_PROD}
+
+     - LAVA_LINK_HOST_NAME2=${LAVA_LINK_HOST_NAME2_PROD}
+     - LAVA_LINK_PORT2=${LAVA_LINK_PORT2_PROD}
+     - LAVA_LINK_PASSWORD2=${LAVA_LINK_PASSWORD2_PROD}
     depends_on:
      - mongo
      - redis
@@ -53,9 +43,6 @@ services:
     - 2010:6379
    networks:
     - net-bot
-  
-
-
 
 networks:
   net-bot:

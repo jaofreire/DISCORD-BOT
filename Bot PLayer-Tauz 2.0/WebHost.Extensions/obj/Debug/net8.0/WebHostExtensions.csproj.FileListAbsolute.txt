@@ -24,3 +24,4 @@ E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHo
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\refint\WebHostExtensions.dll
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\WebHostExtensions.pdb
 E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\ref\WebHostExtensions.dll
+E:\estudo C#\Bot PlayerTauz-Repository 3.0\DISCORD-BOT\Bot PLayer-Tauz 2.0\WebHost.Extensions\obj\Debug\net8.0\Sentry.Attributes.cs

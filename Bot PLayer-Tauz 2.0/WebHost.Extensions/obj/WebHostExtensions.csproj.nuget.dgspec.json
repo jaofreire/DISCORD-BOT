@@ -50,25 +50,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "DSharpPlus": {
+            "DisCatSharp.Lavalink": {
               "target": "Package",
-              "version": "[4.4.6, )"
-            },
-            "DSharpPlus.CommandsNext": {
-              "target": "Package",
-              "version": "[4.4.6, )"
-            },
-            "DSharpPlus.Interactivity": {
-              "target": "Package",
-              "version": "[4.4.6, )"
-            },
-            "DSharpPlus.Lavalink": {
-              "target": "Package",
-              "version": "[4.4.6, )"
-            },
-            "DSharpPlus.SlashCommands": {
-              "target": "Package",
-              "version": "[4.4.6, )"
+              "version": "[10.6.2, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",

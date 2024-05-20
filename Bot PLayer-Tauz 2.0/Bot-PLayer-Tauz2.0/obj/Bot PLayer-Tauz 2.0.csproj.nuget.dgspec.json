@@ -54,25 +54,45 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "DSharpPlus": {
+            "DisCatSharp": {
               "target": "Package",
-              "version": "[4.4.6, )"
+              "version": "[10.6.2, )"
             },
-            "DSharpPlus.CommandsNext": {
+            "DisCatSharp.ApplicationCommands": {
               "target": "Package",
-              "version": "[4.4.6, )"
+              "version": "[10.6.2, )"
             },
-            "DSharpPlus.Interactivity": {
+            "DisCatSharp.Attributes": {
               "target": "Package",
-              "version": "[4.4.6, )"
+              "version": "[10.4.4, )"
             },
-            "DSharpPlus.Lavalink": {
+            "DisCatSharp.CommandsNext": {
               "target": "Package",
-              "version": "[4.4.6, )"
+              "version": "[10.6.2, )"
             },
-            "DSharpPlus.SlashCommands": {
+            "DisCatSharp.Common": {
               "target": "Package",
-              "version": "[4.4.6, )"
+              "version": "[10.6.2, )"
+            },
+            "DisCatSharp.Configuration": {
+              "target": "Package",
+              "version": "[10.6.2, )"
+            },
+            "DisCatSharp.Hosting": {
+              "target": "Package",
+              "version": "[10.6.2, )"
+            },
+            "DisCatSharp.Hosting.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.6.2, )"
+            },
+            "DisCatSharp.Interactivity": {
+              "target": "Package",
+              "version": "[10.6.2, )"
+            },
+            "DisCatSharp.Lavalink": {
+              "target": "Package",
+              "version": "[10.6.2, )"
             },
             "Discord.Addons.Hosting": {
               "target": "Package",
@@ -80,7 +100,7 @@
             },
             "Microsoft.Extensions.Caching.StackExchangeRedis": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
@@ -88,7 +108,7 @@
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
-              "version": "[1.19.6, )"
+              "version": "[1.20.1, )"
             },
             "MongoDB.Bson": {
               "target": "Package",
@@ -104,7 +124,7 @@
             },
             "MongoDB.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.1, )"
             }
           },
           "imports": [
@@ -173,25 +193,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "DSharpPlus": {
+            "DisCatSharp.Lavalink": {
               "target": "Package",
-              "version": "[4.4.6, )"
-            },
-            "DSharpPlus.CommandsNext": {
-              "target": "Package",
-              "version": "[4.4.6, )"
-            },
-            "DSharpPlus.Interactivity": {
-              "target": "Package",
-              "version": "[4.4.6, )"
-            },
-            "DSharpPlus.Lavalink": {
-              "target": "Package",
-              "version": "[4.4.6, )"
-            },
-            "DSharpPlus.SlashCommands": {
-              "target": "Package",
-              "version": "[4.4.6, )"
+              "version": "[10.6.2, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",

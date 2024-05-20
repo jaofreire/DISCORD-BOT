@@ -17,7 +17,9 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\7.0.5\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\7.0.5\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgSentry Condition=" '$(PkgSentry)' == '' ">C:\Users\joaoG\.nuget\packages\sentry\4.4.0</PkgSentry>
     <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\joaoG\.nuget\packages\awssdk.core\3.7.100.14</PkgAWSSDK_Core>
     <PkgAWSSDK_SecurityToken Condition=" '$(PkgAWSSDK_SecurityToken)' == '' ">C:\Users\joaoG\.nuget\packages\awssdk.securitytoken\3.7.100.14</PkgAWSSDK_SecurityToken>
+    <PkgMicrosoft_DependencyValidation_Analyzers Condition=" '$(PkgMicrosoft_DependencyValidation_Analyzers)' == '' ">C:\Users\joaoG\.nuget\packages\microsoft.dependencyvalidation.analyzers\0.11.0</PkgMicrosoft_DependencyValidation_Analyzers>
   </PropertyGroup>
 </Project>

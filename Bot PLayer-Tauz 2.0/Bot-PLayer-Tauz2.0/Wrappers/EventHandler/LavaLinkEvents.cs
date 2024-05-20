@@ -1,7 +1,10 @@
 ﻿using Bot_PLayer_Tauz_2._0.Data.Models;
-using DSharpPlus.Lavalink;
-using DSharpPlus.Lavalink.EventArgs;
+using DisCatSharp.Lavalink;
+using DisCatSharp.Lavalink.Entities;
+using DisCatSharp.Lavalink.Enums;
+using DisCatSharp.Lavalink.EventArgs;
 using Microsoft.Extensions.Caching.Distributed;
+using System.IO.Pipelines;
 using System.Text.Json;
 
 
@@ -9,26 +12,25 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
 {
     public class LavaLinkEvents
     {
-        public LavalinkGuildConnection? _guildConnection { get; set; }
+        public LavalinkGuildPlayer? _guildConnection { get; set; }
         private readonly IDistributedCache _cache;
 
-        private int musiCount = 0;
 
-        public LavaLinkEvents(LavalinkGuildConnection guildConnection, IDistributedCache cache)
+        public LavaLinkEvents(LavalinkGuildPlayer guildConnection, IDistributedCache cache)
         {
             _guildConnection = guildConnection;
             _cache = cache;
-            _guildConnection.PlaybackFinished += OnPlayBackFinished;
+            _guildConnection.TrackEnded += OnTrackEnded;
             
         }
 
-        private async Task OnPlayBackFinished(LavalinkGuildConnection sender, TrackFinishEventArgs args)
+        private async Task OnTrackEnded(LavalinkGuildPlayer sender, LavalinkTrackEndedEventArgs e)
         {
             try
             {
                 var discordClient = DiscordClientEvents.discordClient;
                 var lavaLinkClient = discordClient.GetLavalink();
-                var node = lavaLinkClient.ConnectedNodes.Values.First();
+                var node = lavaLinkClient.ConnectedSessions.Values.First();
 
 
                 Console.WriteLine("FIM DA MÚSICA!!");
@@ -40,18 +42,24 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
 
                 if (musicQueue.Count > 1)
                 {
-                    var loudResult = await node.Rest.GetTracksAsync(musicQueue[0].Name);
+                    var loudResult = await sender.LoadTracksAsync(LavalinkSearchType.Youtube, musicQueue[0].Name);
 
-                    if (loudResult.LoadResultType == LavalinkLoadResultType.LoadFailed || loudResult.LoadResultType == LavalinkLoadResultType.NoMatches)
+                    if (loudResult.LoadType == LavalinkLoadResultType.Empty || loudResult.LoadType == LavalinkLoadResultType.Error)
                         return;
-                   
+
 
                     musicQueue.Remove(musicQueue[0]);
 
                     queueJson = JsonSerializer.Serialize(musicQueue);
                     await _cache.SetStringAsync(sender.Guild.Id.ToString(), queueJson);
 
-                    var track = loudResult.Tracks.First();
+                    var track = loudResult.LoadType switch
+                    {
+                        LavalinkLoadResultType.Track => loudResult.GetResultAs<LavalinkTrack>(),
+                        LavalinkLoadResultType.Playlist => loudResult.GetResultAs<LavalinkPlaylist>().Tracks.First(),
+                        LavalinkLoadResultType.Search => loudResult.GetResultAs<List<LavalinkTrack>>().First(),
+                        _ => throw new InvalidOperationException("Unexpected load result type")
+                    };
 
                     await sender.PlayAsync(track);
 
@@ -59,14 +67,21 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
                 else if (musicQueue.Count == 1)
                 {
 
-                    var loudResult = await node.Rest.GetTracksAsync(musicQueue[0].Name);
+                    var loudResult = await sender.LoadTracksAsync(LavalinkSearchType.Youtube, musicQueue[0].Name);
 
-                    if (loudResult.LoadResultType == LavalinkLoadResultType.LoadFailed || loudResult.LoadResultType == LavalinkLoadResultType.NoMatches)
+                    if (loudResult.LoadType == LavalinkLoadResultType.Empty || loudResult.LoadType == LavalinkLoadResultType.Error)
                         return;
-                    
+
                     musicQueue.Remove(musicQueue[0]);
 
-                    var track = loudResult.Tracks.First();
+                    var track = loudResult.LoadType switch
+                    {
+
+                        LavalinkLoadResultType.Track => loudResult.GetResultAs<LavalinkTrack>(),
+                        LavalinkLoadResultType.Playlist => loudResult.GetResultAs<LavalinkPlaylist>().Tracks.First(),
+                        LavalinkLoadResultType.Search => loudResult.GetResultAs<List<LavalinkTrack>>().First(),
+                        _ => throw new InvalidOperationException("Unexpected load result type")
+                    };
 
                     await sender.PlayAsync(track);
 
@@ -84,10 +99,8 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
 
                 return;
             }
-
-
-
         }
 
+       
     }
 }
