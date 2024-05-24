@@ -25,7 +25,7 @@ class Program
     {
         var builder = Host.CreateApplicationBuilder();
 
-        string state = builder.Configuration["ProjectStage"];
+        string stage = Configurations.DevelopmentStage;
 
         //var discordClient = new DiscordClient(new DiscordConfiguration()
         //{
@@ -38,7 +38,7 @@ class Program
 
         var discordShardedClient = new DiscordShardedClient(new DiscordConfiguration()
         {
-            Token = state == "production" ? builder.Configuration["DiscordEnv:Token"] : builder.Configuration["DiscordEnv:TokenTest"],
+            Token = stage == Configurations.ProductionStage ? builder.Configuration["DiscordEnv:Token"] : builder.Configuration["DiscordEnv:TokenTest"],
             TokenType = TokenType.Bot,
             Intents = DiscordIntents.All,
             MinimumLogLevel = LogLevel.Debug,
@@ -63,11 +63,11 @@ class Program
             .AddDbContext<MongoContext>(options =>
             {
 
-                if (state == "production")
+                if (stage == Configurations.ProductionStage)
                 {
                     options.UseMongoDB(builder.Configuration["MongoDbProd:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
                 }
-                else if (state == "development")
+                else if (stage == Configurations.DevelopmentStage)
                 {
                     options.UseMongoDB(builder.Configuration["MongoDb:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
                 }
@@ -75,11 +75,11 @@ class Program
             })
             .AddStackExchangeRedisCache(options =>
             {
-                if (state == "production")
+                if (stage == Configurations.ProductionStage)
                 {
                     options.Configuration = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRINGS");
                 }
-                else if (state == "development")
+                else if (stage == Configurations.DevelopmentStage)
                 {
                     options.Configuration = builder.Configuration["Redis:ConnectionStrings"];
                 }
@@ -95,7 +95,7 @@ class Program
 
             var commands = await shardsClient.UseCommandsNextAsync(new CommandsNextConfiguration()
             {
-                StringPrefixes = [state == "production" ? builder.Configuration["DiscordEnv:Prefix"] : builder.Configuration["DiscordEnv:PrefixTest"]],
+                StringPrefixes = [stage == Configurations.ProductionStage ? builder.Configuration["DiscordEnv:Prefix"] : builder.Configuration["DiscordEnv:PrefixTest"]],
                 ServiceProvider = dependenciesServices
             });
 
@@ -125,13 +125,13 @@ class Program
         //});
 
 
-        var lavaLinkConfig1 = builder.Services.GetLavaLinkConfiguration(state == "production" ? Environment.GetEnvironmentVariable("LAVA_LINK_HOST_NAME") : builder.Configuration["LavaLink1:Hostname"]
-            , state == "production" ? int.Parse(Environment.GetEnvironmentVariable("LAVA_LINK_PORT")) : builder.Configuration.GetValue<int>("LavaLink1:Port")
-            , state == "production" ? Environment.GetEnvironmentVariable("LAVA_LINK_PASSWORD") : builder.Configuration["LavaLink1:Password"]);
+        var lavaLinkConfig1 = builder.Services.GetLavaLinkConfiguration(stage == Configurations.ProductionStage ? Environment.GetEnvironmentVariable("LAVA_LINK_HOST_NAME") : builder.Configuration["LavaLink1:Hostname"]
+            , stage == Configurations.ProductionStage ? int.Parse(Environment.GetEnvironmentVariable("LAVA_LINK_PORT")) : builder.Configuration.GetValue<int>("LavaLink1:Port")
+            , stage == Configurations.ProductionStage ? Environment.GetEnvironmentVariable("LAVA_LINK_PASSWORD") : builder.Configuration["LavaLink1:Password"]);
 
-        var lavaLinkConfig2 = builder.Services.GetLavaLinkConfiguration(state == "production" ? Environment.GetEnvironmentVariable("LAVA_LINK_HOST_NAME2") : builder.Configuration["LavaLink2:Hostname"]
-            , state == "production" ? int.Parse(Environment.GetEnvironmentVariable("LAVA_LINK_PORT2")) : builder.Configuration.GetValue<int>("LavaLink2:Port")
-            , state == "production" ? Environment.GetEnvironmentVariable("LAVA_LINK_PASSWORD2") : builder.Configuration["LavaLink2:Password"]);
+        var lavaLinkConfig2 = builder.Services.GetLavaLinkConfiguration(stage == Configurations.ProductionStage ? Environment.GetEnvironmentVariable("LAVA_LINK_HOST_NAME2") : builder.Configuration["LavaLink2:Hostname"]
+            , stage == Configurations.ProductionStage ? int.Parse(Environment.GetEnvironmentVariable("LAVA_LINK_PORT2")) : builder.Configuration.GetValue<int>("LavaLink2:Port")
+            , stage == Configurations.ProductionStage ? Environment.GetEnvironmentVariable("LAVA_LINK_PASSWORD2") : builder.Configuration["LavaLink2:Password"]);
 
 
         List<LavalinkConfiguration> lavaLinkServers = [lavaLinkConfig1, lavaLinkConfig2];
