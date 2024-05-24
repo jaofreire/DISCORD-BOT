@@ -9,6 +9,7 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
         public static List<ulong> guildsIdList = new List<ulong>();
 
         public static List<DiscordShardedClient> discordClientsList = new List<DiscordShardedClient>();
+
         public static List<LavalinkConfiguration> lavaLinkConfigurationList = new List<LavalinkConfiguration>();
 
         public static DiscordClient? discordClient {  get; set; }
@@ -26,15 +27,8 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
                 guildsIdList.Add(guildIds.Key);
             }
 
-            int count = 0;
-            foreach (var allGuilsId in guildsIdList)
-            {
-                count++;
-                Console.WriteLine($"Guild:{count}, Id: {allGuilsId}");
-            }
-            //Console.WriteLine($"Shard: {sender.ShardId}");
             //Console.WriteLine($"ShardCount: {sender.ShardCount}");
-            Console.WriteLine($"Total Guilds Connected: {count}");
+            Console.WriteLine($"Total Guilds Connected: {guildsIdList.Count}");
 
         }
 

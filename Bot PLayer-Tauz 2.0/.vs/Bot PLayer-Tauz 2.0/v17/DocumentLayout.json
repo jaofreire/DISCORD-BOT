@@ -9,14 +9,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\bot playertauz-repository 3.0\\discord-bot\\bot player-tauz 2.0\\bot-player-tauz2.0\\wrappers\\eventhandler\\lavalinkevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot-player-tauz2.0\\wrappers\\eventhandler\\lavalinkevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\bot playertauz-repository 3.0\\discord-bot\\bot player-tauz 2.0\\bot-player-tauz2.0\\wrappers\\eventhandler\\discordclientevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot-player-tauz2.0\\wrappers\\eventhandler\\discordclientevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|e:\\estudo c#\\bot playertauz-repository 3.0\\discord-bot\\bot player-tauz 2.0\\bot-player-tauz2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F0C47565-B244-4ABA-ADA4-4BBD37568BC6}|Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj|solutionrelative:bot-player-tauz2.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,35 +44,9 @@
               "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\Wrappers\\EventHandler\\LavaLinkEvents.cs",
               "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Wrappers\\EventHandler\\LavaLinkEvents.cs",
               "RelativeToolTip": "Bot-PLayer-Tauz2.0\\Wrappers\\EventHandler\\LavaLinkEvents.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE4AAAAAAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAE4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-20T15:28:01.022Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DiscordClientEvents.cs",
-              "DocumentMoniker": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Wrappers\\EventHandler\\DiscordClientEvents.cs",
-              "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\Wrappers\\EventHandler\\DiscordClientEvents.cs",
-              "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Wrappers\\EventHandler\\DiscordClientEvents.cs",
-              "RelativeToolTip": "Bot-PLayer-Tauz2.0\\Wrappers\\EventHandler\\DiscordClientEvents.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAQwCcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T18:52:47.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Program.cs",
-              "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\Program.cs",
-              "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Program.cs",
-              "RelativeToolTip": "Bot-PLayer-Tauz2.0\\Program.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAgwJ0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T13:26:54.812Z",
               "EditorCaption": ""
             },
             {
@@ -91,7 +57,7 @@
               "RelativeDocumentMoniker": "Bot-PLayer-Tauz2.0\\Modules\\CommandsModule.cs",
               "ToolTip": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Modules\\CommandsModule.cs",
               "RelativeToolTip": "Bot-PLayer-Tauz2.0\\Modules\\CommandsModule.cs",
-              "ViewState": "AQIAANAAAAAAAAAAAAAwwNAAAAAAAAAA",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAjwMwBAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-18T14:53:50.585Z",
               "EditorCaption": ""
