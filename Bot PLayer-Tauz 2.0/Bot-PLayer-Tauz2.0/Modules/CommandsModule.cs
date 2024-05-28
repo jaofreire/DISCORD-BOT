@@ -1,5 +1,6 @@
 ﻿using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Data.Models;
+using Bot_PLayer_Tauz_2._0.Services;
 using Bot_PLayer_Tauz_2._0.Wrappers.EventHandler;
 using DisCatSharp.CommandsNext;
 using DisCatSharp.CommandsNext.Attributes;
@@ -24,15 +25,17 @@ namespace Bot_PLayer_Tauz_2._0.Modules
     {
 
         private readonly IDistributedCache _cache;
+        private readonly YoutubeApiService _youtubeService;
         public static List<MusicModel>? musicListCache { get; set; }
         public LavaLinkEvents? lavaLinkEvents { get; set; }
+        
 
-        public CommandsModule(IDistributedCache cache)
+        public CommandsModule(IDistributedCache cache, YoutubeApiService youtubeService)
         {
             _cache = cache;
+            _youtubeService = youtubeService;
 
             musicListCache = new List<MusicModel>();
- 
         }
 
 
@@ -149,7 +152,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         [Command("PlayUrl")]
         [Aliases("purl")]
-        public async Task PlayTrackWithUrl(CommandContext ctx, Uri url)
+        public async Task PlayTrackWithUrl(CommandContext ctx, string url)
         {
             try
             {
@@ -160,8 +163,9 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
                 if (!await ValidatePlayTrackAsync(ctx, conn)) return;
 
-                var uri = url.ToString();
-                var loadResult = await conn.LoadTracksAsync(LavalinkSearchType.Youtube, uri);
+                var musicName =  await _youtubeService.SearchMusicUrlAsync(url);
+
+                var loadResult = await conn.LoadTracksAsync(LavalinkSearchType.Youtube, musicName);
 
                 if (!await ValidateTrackWithUrlAsync(ctx, loadResult, url)) return;
 
@@ -289,7 +293,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             await ctx.Channel.SendMessageAsync("Tocando " + track.Info.Title + " url: " + track.Info.Uri);
         }
 
-        private async void PlayMusicWithUrlAsync(CommandContext ctx, LavalinkSession node, LavalinkGuildPlayer conn, Uri Url)
+        private async void PlayMusicWithUrlAsync(CommandContext ctx, LavalinkSession node, LavalinkGuildPlayer conn, string Url)
         {
             if (!await ValidatePlayTrackAsync(ctx, conn)) return;
 
@@ -609,8 +613,8 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
             return true;
         }
-        
-        private async ValueTask<bool> ValidateTrackWithUrlAsync(CommandContext ctx, LavalinkTrackLoadingResult loadResult, Uri url)
+
+        private async ValueTask<bool> ValidateTrackWithUrlAsync(CommandContext ctx, LavalinkTrackLoadingResult loadResult, string url)
         {
             if (loadResult.LoadType == LavalinkLoadResultType.Empty || loadResult.LoadType == LavalinkLoadResultType.Error)
             {

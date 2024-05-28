@@ -16,6 +16,7 @@ using DisCatSharp.CommandsNext;
 using DisCatSharp.Interactivity.Extensions;
 using DisCatSharp.Interactivity;
 using DisCatSharp.Lavalink;
+using Bot_PLayer_Tauz_2._0.Services;
 
 
 class Program
@@ -24,6 +25,7 @@ class Program
     static async Task Main(string[] args)
     {
         var builder = Host.CreateApplicationBuilder();
+
 
         string stage = Configurations.DevelopmentStage;
 
@@ -58,6 +60,7 @@ class Program
 
         List<DiscordShardedClient> shardedClientsList = [discordShardedClient];
 
+        Configurations.YoutubeApiKey = builder.Configuration["YoutubeApi:ApiKey"];
 
         var dependenciesServices = new ServiceCollection()
             .AddDbContext<MongoContext>(options =>
@@ -86,6 +89,7 @@ class Program
 
             })
             .AddSingleton<DiscordClientEvents>()
+            .AddSingleton<YoutubeApiService>()
             .BuildServiceProvider();
 
         foreach (var shardsClient in shardedClientsList)
@@ -149,7 +153,7 @@ class Program
         //await discordShardedClient.UseLavalinkAsync();
 
 
-        await lavaLinkClient1.ConnectAsync(lavaLinkServers[0]);
+        await lavaLinkClient1.ConnectAsync(lavaLinkServers[1]);
         //await lavaLinkClient2.ConnectAsync(lavaLinkServers[1]);
 
         DiscordClientEvents.discordClientsList.Add(discordShardedClient);
