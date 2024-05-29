@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebHostExtensions")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd2c13dec63a0d083c8375421e38ae8f801419d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9894110f2ffa9356b908709306c46a142dc0133")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebHostExtensions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebHostExtensions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

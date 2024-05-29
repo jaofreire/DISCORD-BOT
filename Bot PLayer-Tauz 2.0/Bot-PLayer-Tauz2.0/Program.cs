@@ -1,9 +1,5 @@
 ﻿using Bot_PLayer_Tauz_2._0;
-using Bot_PLayer_Tauz_2._0.Data;
 using Bot_PLayer_Tauz_2._0.Modules;
-using Bot_PLayer_Tauz_2._0.Wrappers;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,7 +12,6 @@ using DisCatSharp.CommandsNext;
 using DisCatSharp.Interactivity.Extensions;
 using DisCatSharp.Interactivity;
 using DisCatSharp.Lavalink;
-using Bot_PLayer_Tauz_2._0.Services;
 
 
 class Program
@@ -26,16 +21,7 @@ class Program
     {
         var builder = Host.CreateApplicationBuilder();
 
-
-        string stage = Configurations.DevelopmentStage;
-
-        //var discordClient = new DiscordClient(new DiscordConfiguration()
-        //{
-        //    Token = state == "production" ? builder.Configuration["DiscordEnv:Token"] : builder.Configuration["DiscordEnv:TokenTest"],
-        //    TokenType = TokenType.Bot,
-        //    Intents = DiscordIntents.All,
-        //    MinimumLogLevel = LogLevel.Debug
-        //});
+        string stage = Configurations.ProductionStage;
 
 
         var discordShardedClient = new DiscordShardedClient(new DiscordConfiguration()
@@ -48,39 +34,14 @@ class Program
             UseRelativeRatelimit = true
         });
 
-        //var discordShardedClient2 = new DiscordShardedClient(new DiscordConfiguration()
-        //{
-        //    Token = state == "production" ? builder.Configuration["DiscordEnv:Token"] : builder.Configuration["DiscordEnv:TokenTest"],
-        //    TokenType = TokenType.Bot,
-        //    Intents = DiscordIntents.All,
-        //    MinimumLogLevel = LogLevel.Debug,
-        //    AutoReconnect = true,
-        //    UseRelativeRatelimit = true
-        //});
-
         List<DiscordShardedClient> shardedClientsList = [discordShardedClient];
 
-        Configurations.YoutubeApiKey = builder.Configuration["YoutubeApi:ApiKey"];
-
         var dependenciesServices = new ServiceCollection()
-            .AddDbContext<MongoContext>(options =>
-            {
-
-                if (stage == Configurations.ProductionStage)
-                {
-                    options.UseMongoDB(builder.Configuration["MongoDbProd:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
-                }
-                else if (stage == Configurations.DevelopmentStage)
-                {
-                    options.UseMongoDB(builder.Configuration["MongoDb:ConnectionStrings"], builder.Configuration["MongoDb:DataBase"]);
-                }
-
-            })
             .AddStackExchangeRedisCache(options =>
             {
                 if (stage == Configurations.ProductionStage)
                 {
-                    options.Configuration = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRINGS");
+                    options.Configuration = builder.Configuration["RedisProd:ConnectionStrings"];
                 }
                 else if (stage == Configurations.DevelopmentStage)
                 {
@@ -89,13 +50,11 @@ class Program
 
             })
             .AddSingleton<DiscordClientEvents>()
-            .AddSingleton<YoutubeApiService>()
             .BuildServiceProvider();
 
         foreach (var shardsClient in shardedClientsList)
         {
             shardsClient.Ready += DiscordClientEvents.IsReady;
-            shardsClient.GuildAvailable += DiscordClientEvents.IsGuildAvaliable;
 
             var commands = await shardsClient.UseCommandsNextAsync(new CommandsNextConfiguration()
             {
@@ -110,55 +69,25 @@ class Program
                 Timeout = TimeSpan.FromMinutes(3)
             });
         }
-        //discordShardedClient.Ready += DiscordClientEvents.IsReady;
-        //discordShardedClient.GuildAvailable += DiscordClientEvents.IsGuildAvaliable;
+
+        var lavaLinkConfig1 = builder.Services.GetLavaLinkConfiguration(builder.Configuration["LavaLink1:Hostname"]
+            , builder.Configuration.GetValue<int>("LavaLink1:Port")
+            , builder.Configuration["LavaLink1:Password"]);
 
 
-        //var commands = await discordShardedClient.UseCommandsNextAsync(new CommandsNextConfiguration()
-        //{
-        //    StringPrefixes = [state == "production" ? builder.Configuration["DiscordEnv:Prefix"] : builder.Configuration["DiscordEnv:PrefixTest"]],
-        //    Services = dependenciesServices
-        //});
-
-        //commands.RegisterCommands<CommandsModule>();
-
-        //await discordShardedClient.UseInteractivityAsync(new InteractivityConfiguration()
-        //{
-        //    PollBehaviour = PollBehaviour.KeepEmojis,
-        //    Timeout = TimeSpan.FromMinutes(3)
-        //});
-
-
-        var lavaLinkConfig1 = builder.Services.GetLavaLinkConfiguration(stage == Configurations.ProductionStage ? Environment.GetEnvironmentVariable("LAVA_LINK_HOST_NAME") : builder.Configuration["LavaLink1:Hostname"]
-            , stage == Configurations.ProductionStage ? int.Parse(Environment.GetEnvironmentVariable("LAVA_LINK_PORT")) : builder.Configuration.GetValue<int>("LavaLink1:Port")
-            , stage == Configurations.ProductionStage ? Environment.GetEnvironmentVariable("LAVA_LINK_PASSWORD") : builder.Configuration["LavaLink1:Password"]);
-
-        var lavaLinkConfig2 = builder.Services.GetLavaLinkConfiguration(stage == Configurations.ProductionStage ? Environment.GetEnvironmentVariable("LAVA_LINK_HOST_NAME2") : builder.Configuration["LavaLink2:Hostname"]
-            , stage == Configurations.ProductionStage ? int.Parse(Environment.GetEnvironmentVariable("LAVA_LINK_PORT2")) : builder.Configuration.GetValue<int>("LavaLink2:Port")
-            , stage == Configurations.ProductionStage ? Environment.GetEnvironmentVariable("LAVA_LINK_PASSWORD2") : builder.Configuration["LavaLink2:Password"]);
-
-
-        List<LavalinkConfiguration> lavaLinkServers = [lavaLinkConfig1, lavaLinkConfig2];
+        List<LavalinkConfiguration> lavaLinkServers = [lavaLinkConfig1];
+        Console.WriteLine($"LavaLink Credentials1: Hostname: {builder.Configuration["LavaLink1:Hostname"]}," +
+            $" Port:{builder.Configuration.GetValue<int>("LavaLink1:Port")}" +
+            $" Password: {builder.Configuration["LavaLink1:Password"]}");
 
         await discordShardedClient.StartAsync();
-        //await discordShardedClient2.StartAsync();
-
 
         var discClient1 = discordShardedClient.ShardClients[0];
-        //var discClient2 = discordShardedClient2.ShardClients[0];
 
         var lavaLinkClient1 = discClient1.UseLavalink();
-        //var lavaLinkClient2 = discClient2.UseLavalink();
-
-        //await discordShardedClient.UseLavalinkAsync();
-
-
-        await lavaLinkClient1.ConnectAsync(lavaLinkServers[1]);
-        //await lavaLinkClient2.ConnectAsync(lavaLinkServers[1]);
+        await lavaLinkClient1.ConnectAsync(lavaLinkServers[0]);
 
         DiscordClientEvents.discordClientsList.Add(discordShardedClient);
-        //DiscordClientEvents.discordClientsList.Add(discordShardedClient2);
-
 
 
         await Task.Delay(-1);

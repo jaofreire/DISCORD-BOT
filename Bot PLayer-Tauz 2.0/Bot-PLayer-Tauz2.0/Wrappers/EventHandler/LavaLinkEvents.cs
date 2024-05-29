@@ -1,10 +1,10 @@
-﻿using Bot_PLayer_Tauz_2._0.Data.Models;
+﻿using Bot_PLayer_Tauz_2._0.Models;
+using Bot_PLayer_Tauz_2._0.Modules;
 using DisCatSharp.Lavalink;
 using DisCatSharp.Lavalink.Entities;
 using DisCatSharp.Lavalink.Enums;
 using DisCatSharp.Lavalink.EventArgs;
 using Microsoft.Extensions.Caching.Distributed;
-using System.IO.Pipelines;
 using System.Text.Json;
 
 
@@ -14,13 +14,15 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
     {
         public LavalinkGuildPlayer? _guildConnection { get; set; }
         private readonly IDistributedCache _cache;
+        private readonly CommandsModule _commandsModule;
 
 
-        public LavaLinkEvents(LavalinkGuildPlayer guildConnection, IDistributedCache cache)
+        public LavaLinkEvents(LavalinkGuildPlayer guildConnection, IDistributedCache cache, CommandsModule commandsModule)
         {
             _guildConnection = guildConnection;
             _cache = cache;
             _guildConnection.TrackEnded += OnTrackEnded;
+            _commandsModule = commandsModule;
             
         }
 
@@ -47,7 +49,6 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
                     if (loudResult.LoadType == LavalinkLoadResultType.Empty || loudResult.LoadType == LavalinkLoadResultType.Error)
                         return;
 
-
                     musicQueue.Remove(musicQueue[0]);
 
                     queueJson = JsonSerializer.Serialize(musicQueue);
@@ -61,7 +62,7 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
                         _ => throw new InvalidOperationException("Unexpected load result type")
                     };
 
-                    await sender.PlayAsync(track);
+                    await _commandsModule.EventPlayMusicAsync(e.Guild, track);
 
                 }
                 else if (musicQueue.Count == 1)
@@ -83,7 +84,7 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
                         _ => throw new InvalidOperationException("Unexpected load result type")
                     };
 
-                    await sender.PlayAsync(track);
+                    await _commandsModule.EventPlayMusicAsync(e.Guild, track);
 
                     queueJson = JsonSerializer.Serialize(musicQueue);
                     await _cache.SetStringAsync(sender.Guild.Id.ToString(), queueJson);

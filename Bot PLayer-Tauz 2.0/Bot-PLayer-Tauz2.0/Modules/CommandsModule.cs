@@ -1,18 +1,13 @@
-﻿using Bot_PLayer_Tauz_2._0.Data;
-using Bot_PLayer_Tauz_2._0.Data.Models;
-using Bot_PLayer_Tauz_2._0.Services;
+﻿using Bot_PLayer_Tauz_2._0.Models;
 using Bot_PLayer_Tauz_2._0.Wrappers.EventHandler;
 using DisCatSharp.CommandsNext;
 using DisCatSharp.CommandsNext.Attributes;
 using DisCatSharp.Entities;
 using DisCatSharp.Enums;
-using DisCatSharp.Interactivity.Extensions;
 using DisCatSharp.Lavalink;
 using DisCatSharp.Lavalink.Entities;
 using DisCatSharp.Lavalink.Enums;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
-using MongoDB.Bson;
 using System.Text.Json;
 
 
@@ -25,15 +20,13 @@ namespace Bot_PLayer_Tauz_2._0.Modules
     {
 
         private readonly IDistributedCache _cache;
-        private readonly YoutubeApiService _youtubeService;
         public static List<MusicModel>? musicListCache { get; set; }
         public LavaLinkEvents? lavaLinkEvents { get; set; }
         
 
-        public CommandsModule(IDistributedCache cache, YoutubeApiService youtubeService)
+        public CommandsModule(IDistributedCache cache)
         {
             _cache = cache;
-            _youtubeService = youtubeService;
 
             musicListCache = new List<MusicModel>();
         }
@@ -61,7 +54,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 await lavaNode.ConnectAsync(voiceChannel);
                 await ctx.Channel.SendMessageAsync("Join " + voiceChannel.Name);
 
-                var listInitializate = new List<MusicModel>();
+                var listInitializate = new List<LavalinkTrack>();
 
                 var listJson = JsonSerializer.Serialize(listInitializate);
 
@@ -107,7 +100,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
 
         [Command("Play")]
         [Aliases("p")]
-        public async Task PlayTrackWithName(CommandContext ctx, [RemainingText]string musicName)
+        public async Task PlayTrackWithName(CommandContext ctx, [RemainingText]string musicQuery)
         {
             try
             {
@@ -116,6 +109,8 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 var lavaClient = currentClient.GetLavalink();
                 var node = lavaClient.ConnectedSessions.Values.First();
                 var conn = node.GetGuildPlayer(ctx.Member.VoiceState.Guild);
+
+                
                 foreach (var nodes in lavaClient.ConnectedSessions.Keys)
                 {
                     Console.WriteLine(nodes.ToString());
@@ -127,58 +122,18 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                     return;
                 }
 
-                if (conn.CurrentTrack == null) lavaLinkEvents = new LavaLinkEvents(conn, _cache);
+                if (conn.CurrentTrack == null) lavaLinkEvents = new LavaLinkEvents(conn, _cache, this);
 
                 if (!await ValidateIfUserInTheChannel(ctx)) return;
 
                 if (conn.CurrentTrack != null)
                 {
-                    AddMusicInTheQueue(ctx, conn, musicName);
+                   await AddMusicInTheQueue(ctx, conn, musicQuery);
                     return;
                 }
 
-                PlayMusicAsync(ctx, node, conn, musicName);
+               await PlayMusicAsync(ctx, musicQuery);
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.InnerException);
-                return;
-            }
-
-        }
-
-
-        [Command("PlayUrl")]
-        [Aliases("purl")]
-        public async Task PlayTrackWithUrl(CommandContext ctx, string url)
-        {
-            try
-            {
-                var currentClient = DiscordClientEvents.discordClientsList[0].ShardClients[0];
-                var lavaClient = currentClient.GetLavalink();
-                var node = lavaClient.ConnectedSessions.Values.First();
-                var conn = node.GetGuildPlayer(ctx.Member.VoiceState.Guild);
-
-                if (!await ValidatePlayTrackAsync(ctx, conn)) return;
-
-                var musicName =  await _youtubeService.SearchMusicUrlAsync(url);
-
-                var loadResult = await conn.LoadTracksAsync(LavalinkSearchType.Youtube, musicName);
-
-                if (!await ValidateTrackWithUrlAsync(ctx, loadResult, url)) return;
-
-                var track = loadResult.LoadType switch
-                {
-                    LavalinkLoadResultType.Track => loadResult.GetResultAs<LavalinkTrack>(),
-                    LavalinkLoadResultType.Playlist => loadResult.GetResultAs<LavalinkPlaylist>().Tracks.First(),
-                    LavalinkLoadResultType.Search => loadResult.GetResultAs<List<LavalinkTrack>>().First(),
-                    _ => throw new InvalidOperationException("Unexpected load result type")
-                };
-
-                await conn.PlayAsync(track);
-                await ctx.Channel.SendMessageAsync("Tocando " + track.Info.Title + " url: " + track.Info.Uri);
             }
             catch (Exception ex)
             {
@@ -263,10 +218,26 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             }
         }
 
-
-
-        private async void PlayMusicAsync(CommandContext ctx, LavalinkSession node, LavalinkGuildPlayer conn, string musicName)
+        public async Task EventPlayMusicAsync(DiscordGuild guild, LavalinkTrack track)
         {
+            var currentClient = DiscordClientEvents.discordClientsList[0].ShardClients[0];
+            var lavaClient = currentClient.GetLavalink();
+            var node = lavaClient.ConnectedSessions.Values.First();
+            var conn = node.GetGuildPlayer(guild);
+
+            await conn.PlayAsync(track);
+ 
+        }
+
+
+        private async Task PlayMusicAsync(CommandContext ctx, string musicName)
+        {
+
+            var currentClient = DiscordClientEvents.discordClientsList[0].ShardClients[0];
+            var lavaClient = currentClient.GetLavalink();
+            var node = lavaClient.ConnectedSessions.Values.First();
+            var conn = node.GetGuildPlayer(ctx.Member.VoiceState.Guild);
+
             if (!await ValidatePlayTrackAsync(ctx, conn)) return;
 
             var loadResult = await conn.LoadTracksAsync(LavalinkSearchType.Youtube, musicName);
@@ -286,6 +257,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 Name = track.Info.Title,
                 Url = track.Info.Uri.ToString()
             };
+
 
             musicListCache.Add(model);
 
@@ -293,30 +265,10 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             await ctx.Channel.SendMessageAsync("Tocando " + track.Info.Title + " url: " + track.Info.Uri);
         }
 
-        private async void PlayMusicWithUrlAsync(CommandContext ctx, LavalinkSession node, LavalinkGuildPlayer conn, string Url)
+
+        private async Task AddMusicInTheQueue(CommandContext ctx , LavalinkGuildPlayer conn, string musicName)
         {
-            if (!await ValidatePlayTrackAsync(ctx, conn)) return;
-
-            var uri = Url.ToString();
-            var loadResult = await conn.LoadTracksAsync(LavalinkSearchType.Youtube, uri);
-
-            if (!await ValidateTrackWithUrlAsync(ctx, loadResult, Url)) return;
-
-            var track = loadResult.LoadType switch
-            {
-                LavalinkLoadResultType.Track => loadResult.GetResultAs<LavalinkTrack>(),
-                LavalinkLoadResultType.Playlist => loadResult.GetResultAs<LavalinkPlaylist>().Tracks.First(),
-                LavalinkLoadResultType.Search => loadResult.GetResultAs<List<LavalinkTrack>>().First(),
-                _ => throw new InvalidOperationException("Unexpected load result type")
-            };
-
-            await conn.PlayAsync(track);
-            await ctx.Channel.SendMessageAsync("Tocando " + track.Info.Title + " url: " + track.Info.Uri);
-        }
-
-        private async void AddMusicInTheQueue(CommandContext ctx , LavalinkGuildPlayer conn, string musicName)
-        {
-
+            
             var loadResult = await conn.LoadTracksAsync(LavalinkSearchType.Youtube, musicName);
 
             if (!await ValidateTrackAsync(ctx, loadResult, musicName)) return;
@@ -334,6 +286,7 @@ namespace Bot_PLayer_Tauz_2._0.Modules
                 Name = track.Info.Title,
                 Url = track.Info.Uri.ToString()
             };
+
 
             var queue = await DeserializeMusicList(ctx);
             if (queue == null) return;
@@ -454,12 +407,6 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             }
 
             var queue = JsonSerializer.Deserialize<List<MusicModel>>(queueJson);
-
-            if (queue.Count == 0)
-            {
-                await ctx.Channel.SendMessageAsync("Lista de espera vazia");
-                return null;
-            }
 
             return queue;
         }
@@ -608,17 +555,6 @@ namespace Bot_PLayer_Tauz_2._0.Modules
             if (loadResult.LoadType == LavalinkLoadResultType.Empty || loadResult.LoadType == LavalinkLoadResultType.Error)
             {
                 await ctx.Channel.SendMessageAsync("Falha em encontrar " + musicName);
-                return false;
-            }
-
-            return true;
-        }
-
-        private async ValueTask<bool> ValidateTrackWithUrlAsync(CommandContext ctx, LavalinkTrackLoadingResult loadResult, string url)
-        {
-            if (loadResult.LoadType == LavalinkLoadResultType.Empty || loadResult.LoadType == LavalinkLoadResultType.Error)
-            {
-                await ctx.Channel.SendMessageAsync("Falha em encontrar música com a URl: " + url);
                 return false;
             }
 

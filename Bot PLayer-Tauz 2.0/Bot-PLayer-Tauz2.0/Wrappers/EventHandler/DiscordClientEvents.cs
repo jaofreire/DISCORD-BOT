@@ -32,11 +32,5 @@ namespace Bot_PLayer_Tauz_2._0.Wrappers.EventHandler
 
         }
 
-        public static async Task IsGuildAvaliable(DiscordClient sender, GuildCreateEventArgs args)
-        {
-            Console.WriteLine($"ShardId: {sender.ShardId}, GuildId: {args.Guild.Id}");
-
-        }
-
     }
 }

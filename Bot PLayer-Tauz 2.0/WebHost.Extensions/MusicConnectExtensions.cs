@@ -15,7 +15,8 @@ namespace WebHostExtensions
             {
                 Hostname = hostName,
                 Port = port,
-                Secured = true,
+                Secured = true
+                
             };
 
             var lavaLinkConfig = new LavalinkConfiguration()

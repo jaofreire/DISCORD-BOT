@@ -23,13 +23,9 @@
           "Google.Apis.Auth": "1.68.0",
           "Google.Apis.Core": "1.68.0",
           "Google.Apis.YouTube.v3": "1.68.0.3421",
-          "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.5",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.6",
           "Microsoft.Extensions.Hosting": "8.0.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.20.1",
-          "MongoDB.Bson": "2.25.0",
-          "MongoDB.Driver": "2.25.0",
-          "MongoDB.Driver.Core": "2.25.0",
-          "MongoDB.EntityFrameworkCore": "8.0.1",
           "WebHostExtensions": "1.0.0"
         },
         "runtime": {
@@ -366,29 +362,30 @@
         }
       },
       "Microsoft.DependencyValidation.Analyzers/0.11.0": {},
-      "Microsoft.EntityFrameworkCore/8.0.4": {
+      "Microsoft.EntityFrameworkCore/7.0.5": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "8.0.4",
-          "Microsoft.EntityFrameworkCore.Analyzers": "8.0.4",
-          "Microsoft.Extensions.Caching.Memory": "8.0.0",
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.5",
+          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.5",
+          "Microsoft.Extensions.Caching.Memory": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
           "Microsoft.Extensions.Logging": "8.0.0"
         },
         "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
-            "assemblyVersion": "8.0.4.0",
-            "fileVersion": "8.0.424.16902"
+          "lib/net6.0/Microsoft.EntityFrameworkCore.dll": {
+            "assemblyVersion": "7.0.5.0",
+            "fileVersion": "7.0.523.16503"
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/8.0.4": {
+      "Microsoft.EntityFrameworkCore.Abstractions/7.0.5": {
         "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
-            "assemblyVersion": "8.0.4.0",
-            "fileVersion": "8.0.424.16902"
+          "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
+            "assemblyVersion": "7.0.5.0",
+            "fileVersion": "7.0.523.16503"
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/8.0.4": {},
+      "Microsoft.EntityFrameworkCore.Analyzers/7.0.5": {},
       "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0"
@@ -400,7 +397,7 @@
           }
         }
       },
-      "Microsoft.Extensions.Caching.Memory/8.0.0": {
+      "Microsoft.Extensions.Caching.Memory/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Caching.Abstractions": "8.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1",
@@ -409,13 +406,13 @@
           "Microsoft.Extensions.Primitives": "8.0.0"
         },
         "runtime": {
-          "lib/net8.0/Microsoft.Extensions.Caching.Memory.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.53103"
+          "lib/net7.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
           }
         }
       },
-      "Microsoft.Extensions.Caching.StackExchangeRedis/8.0.5": {
+      "Microsoft.Extensions.Caching.StackExchangeRedis/8.0.6": {
         "dependencies": {
           "Microsoft.Extensions.Caching.Abstractions": "8.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.1",
@@ -424,8 +421,8 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll": {
-            "assemblyVersion": "8.0.5.0",
-            "fileVersion": "8.0.524.22404"
+            "assemblyVersion": "8.0.6.0",
+            "fileVersion": "8.0.624.26909"
           }
         }
       },
@@ -824,68 +821,68 @@
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
-      "MongoDB.Bson/2.25.0": {
+      "MongoDB.Bson/2.22.0": {
         "dependencies": {
           "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "runtime": {
           "lib/netstandard2.1/MongoDB.Bson.dll": {
-            "assemblyVersion": "2.25.0.0",
-            "fileVersion": "2.25.0.0"
+            "assemblyVersion": "2.22.0.0",
+            "fileVersion": "2.22.0.0"
           }
         }
       },
-      "MongoDB.Driver/2.25.0": {
+      "MongoDB.Driver/2.22.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.1",
-          "MongoDB.Bson": "2.25.0",
-          "MongoDB.Driver.Core": "2.25.0",
-          "MongoDB.Libmongocrypt": "1.8.2"
+          "MongoDB.Bson": "2.22.0",
+          "MongoDB.Driver.Core": "2.22.0",
+          "MongoDB.Libmongocrypt": "1.8.0"
         },
         "runtime": {
           "lib/netstandard2.1/MongoDB.Driver.dll": {
-            "assemblyVersion": "2.25.0.0",
-            "fileVersion": "2.25.0.0"
+            "assemblyVersion": "2.22.0.0",
+            "fileVersion": "2.22.0.0"
           }
         }
       },
-      "MongoDB.Driver.Core/2.25.0": {
+      "MongoDB.Driver.Core/2.22.0": {
         "dependencies": {
           "AWSSDK.SecurityToken": "3.7.100.14",
           "DnsClient": "1.6.1",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.1",
-          "MongoDB.Bson": "2.25.0",
-          "MongoDB.Libmongocrypt": "1.8.2",
+          "MongoDB.Bson": "2.22.0",
+          "MongoDB.Libmongocrypt": "1.8.0",
           "SharpCompress": "0.30.1",
           "Snappier": "1.0.0",
           "System.Buffers": "4.5.1",
-          "ZstdSharp.Port": "0.7.3"
+          "ZstdSharp.Port": "0.6.2"
         },
         "runtime": {
           "lib/netstandard2.1/MongoDB.Driver.Core.dll": {
-            "assemblyVersion": "2.25.0.0",
-            "fileVersion": "2.25.0.0"
+            "assemblyVersion": "2.22.0.0",
+            "fileVersion": "2.22.0.0"
           }
         }
       },
-      "MongoDB.EntityFrameworkCore/8.0.1": {
+      "MongoDB.EntityFrameworkCore/7.0.0-preview.1": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.4",
-          "MongoDB.Driver": "2.25.0"
+          "Microsoft.EntityFrameworkCore": "7.0.5",
+          "MongoDB.Driver": "2.22.0"
         },
         "runtime": {
-          "lib/net8.0/MongoDB.EntityFrameworkCore.dll": {
-            "assemblyVersion": "8.0.1.0",
-            "fileVersion": "8.0.1.0"
+          "lib/net7.0/MongoDB.EntityFrameworkCore.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
           }
         }
       },
-      "MongoDB.Libmongocrypt/1.8.2": {
+      "MongoDB.Libmongocrypt/1.8.0": {
         "runtime": {
           "lib/netstandard2.1/MongoDB.Libmongocrypt.dll": {
-            "assemblyVersion": "1.8.2.0",
-            "fileVersion": "1.8.2.0"
+            "assemblyVersion": "1.8.0.0",
+            "fileVersion": "1.8.0.0"
           }
         },
         "runtimeTargets": {
@@ -1735,11 +1732,11 @@
         }
       },
       "System.ValueTuple/4.5.0": {},
-      "ZstdSharp.Port/0.7.3": {
+      "ZstdSharp.Port/0.6.2": {
         "runtime": {
-          "lib/net7.0/ZstdSharp.dll": {
-            "assemblyVersion": "0.7.3.0",
-            "fileVersion": "0.7.3.0"
+          "lib/net6.0/ZstdSharp.dll": {
+            "assemblyVersion": "0.6.2.0",
+            "fileVersion": "0.6.2.0"
           }
         }
       },
@@ -1748,7 +1745,7 @@
           "DisCatSharp.Lavalink": "10.6.2",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "8.0.0",
-          "MongoDB.EntityFrameworkCore": "8.0.1"
+          "MongoDB.EntityFrameworkCore": "7.0.0-preview.1"
         },
         "runtime": {
           "WebHostExtensions.dll": {}
@@ -1944,26 +1941,26 @@
       "path": "microsoft.dependencyvalidation.analyzers/0.11.0",
       "hashPath": "microsoft.dependencyvalidation.analyzers.0.11.0.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore/8.0.4": {
+    "Microsoft.EntityFrameworkCore/7.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/kyu9pXuxQvhg8RO/oN5Q5Og7cDIVvZtrt1z48rX7Yido+zEGkUkp3/Bjd9u45N2uuPPF8mn2pKDlAewCvv3/Q==",
-      "path": "microsoft.entityframeworkcore/8.0.4",
-      "hashPath": "microsoft.entityframeworkcore.8.0.4.nupkg.sha512"
+      "sha512": "sha512-RXbRLHHWP2Z3pq8qcL5nQ6LPeoOyp8hasM5bd0Te8PiQi3RjWQR4tcbdY5XMqQ+oTO9wA8/RLhZRn/hnxlTDnQ==",
+      "path": "microsoft.entityframeworkcore/7.0.5",
+      "hashPath": "microsoft.entityframeworkcore.7.0.5.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/8.0.4": {
+    "Microsoft.EntityFrameworkCore.Abstractions/7.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-S50pjtPNOvRktacaO6UAhvGCPMT56wxqEq8fQfcjaSUySPGba6mKWo6ackw6DdeAR1cA6U+U0uj27warA2KtJA==",
-      "path": "microsoft.entityframeworkcore.abstractions/8.0.4",
-      "hashPath": "microsoft.entityframeworkcore.abstractions.8.0.4.nupkg.sha512"
+      "sha512": "sha512-iwQso+hFRsEWjhH2WsEQj1D2QE5BlEXiXEt6A3SlYTPRPdZsyTNDeDDEdtxL+H/UJPQgQYY+9SMMRcEiXBmCAA==",
+      "path": "microsoft.entityframeworkcore.abstractions/7.0.5",
+      "hashPath": "microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/8.0.4": {
+    "Microsoft.EntityFrameworkCore.Analyzers/7.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-P8hfMZECdbgle4Us8HGRUKAjqVwgbtr5JqtCxqEoiVORrNQAmcpu3g1NKwTAoUsO9Z0QRgExtYoAmdggR/DkMQ==",
-      "path": "microsoft.entityframeworkcore.analyzers/8.0.4",
-      "hashPath": "microsoft.entityframeworkcore.analyzers.8.0.4.nupkg.sha512"
+      "sha512": "sha512-yMLM/aK1MikVqpjxd7PJ1Pjgztd3VAd26ZHxyjxG3RPeM9cHjvS5tCg9kAAayR6eHmBg0ffZsHdT28WfA5tTlA==",
+      "path": "microsoft.entityframeworkcore.analyzers/7.0.5",
+      "hashPath": "microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
       "type": "package",
@@ -1972,19 +1969,19 @@
       "path": "microsoft.extensions.caching.abstractions/8.0.0",
       "hashPath": "microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Caching.Memory/8.0.0": {
+    "Microsoft.Extensions.Caching.Memory/7.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7pqivmrZDzo1ADPkRwjy+8jtRKWRCPag9qPI+p7sgu7Q4QreWhcvbiWXsbhP+yY8XSiDvZpu2/LWdBv7PnmOpQ==",
-      "path": "microsoft.extensions.caching.memory/8.0.0",
-      "hashPath": "microsoft.extensions.caching.memory.8.0.0.nupkg.sha512"
+      "sha512": "sha512-xpidBs2KCE2gw1JrD0quHE72kvCaI3xFql5/Peb2GRtUuZX+dYPoK/NTdVMiM67Svym0M0Df9A3xyU0FbMQhHw==",
+      "path": "microsoft.extensions.caching.memory/7.0.0",
+      "hashPath": "microsoft.extensions.caching.memory.7.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Caching.StackExchangeRedis/8.0.5": {
+    "Microsoft.Extensions.Caching.StackExchangeRedis/8.0.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4EDGwj3anjAf7tv5Joaj7pyg29J5W12WxBbBzf3Dl2gDLI1Zo/pujsfMzaq5n4AzhYg8s4RDKfdsn8AY+OXK9A==",
-      "path": "microsoft.extensions.caching.stackexchangeredis/8.0.5",
-      "hashPath": "microsoft.extensions.caching.stackexchangeredis.8.0.5.nupkg.sha512"
+      "sha512": "sha512-fMURqUIykCP6nhG/hVnhCQGRgUMAIBmU8nx1bJdWc4p0UbrmQFN6JVgfNuje9/5xsFA8Nqaw/WCe8tX9W0hEzQ==",
+      "path": "microsoft.extensions.caching.stackexchangeredis/8.0.6",
+      "hashPath": "microsoft.extensions.caching.stackexchangeredis.8.0.6.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/8.0.0": {
       "type": "package",
@@ -2217,40 +2214,40 @@
       "path": "microsoft.win32.registry/5.0.0",
       "hashPath": "microsoft.win32.registry.5.0.0.nupkg.sha512"
     },
-    "MongoDB.Bson/2.25.0": {
+    "MongoDB.Bson/2.22.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xQx/qtC2nu9oGiyNqAwfiDpUMweLi0nID677cyKykpwmj5AVMrnd//UwmcmuX95178DeY6rf7cjmA613TQXPiA==",
-      "path": "mongodb.bson/2.25.0",
-      "hashPath": "mongodb.bson.2.25.0.nupkg.sha512"
+      "sha512": "sha512-7Z+uP+PeIBrkzzRORTCjrMSYhzQgXxLYkXyML8WsBN7tHddicNY9Xh8Cmp5gRR4U4NuEbXCQtHplju0iVY/KuA==",
+      "path": "mongodb.bson/2.22.0",
+      "hashPath": "mongodb.bson.2.22.0.nupkg.sha512"
     },
-    "MongoDB.Driver/2.25.0": {
+    "MongoDB.Driver/2.22.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dMqnZTV6MuvoEI4yFtSvKJdAoN6NeyAEvG8aoxnrLIVd7bR84QxLgpsM1nhK17qkOcIx/IrpMIfrvp5iMnYGBg==",
-      "path": "mongodb.driver/2.25.0",
-      "hashPath": "mongodb.driver.2.25.0.nupkg.sha512"
+      "sha512": "sha512-ngswtmzdtfaq+L0Ti1Kjm0QnVLgEJK233YPCpGN2buSArY2xEPsnQ2yos7SPGxuDzZPnxdn+XG9/OBt9atCpWw==",
+      "path": "mongodb.driver/2.22.0",
+      "hashPath": "mongodb.driver.2.22.0.nupkg.sha512"
     },
-    "MongoDB.Driver.Core/2.25.0": {
+    "MongoDB.Driver.Core/2.22.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oN4nLgO5HQEThTg/zqeoHqaO2+q64DBVb4r7BvhaFb0p0TM9jZKnCKvh1EA8d9E9swIz0CgvMrvL1mPyRCZzag==",
-      "path": "mongodb.driver.core/2.25.0",
-      "hashPath": "mongodb.driver.core.2.25.0.nupkg.sha512"
+      "sha512": "sha512-aMlyeGbQ9wk/bmy9xSr6dnkOszO3MVgv1wNcsm4ACwiup//VCZxvj5k0Wq/E0xGBYmqs/tNXqJmLy1IawRXPHA==",
+      "path": "mongodb.driver.core/2.22.0",
+      "hashPath": "mongodb.driver.core.2.22.0.nupkg.sha512"
     },
-    "MongoDB.EntityFrameworkCore/8.0.1": {
+    "MongoDB.EntityFrameworkCore/7.0.0-preview.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-G+Y86p2NC+OIICrcUIqea2bkBd6hfrVs8zcjscSE/rMfUSqxL41AmZ7zxPnaQcsVzYhe7CiyR3Hhd3Ucw8NzOw==",
-      "path": "mongodb.entityframeworkcore/8.0.1",
-      "hashPath": "mongodb.entityframeworkcore.8.0.1.nupkg.sha512"
+      "sha512": "sha512-AwfjV3WEm+tP4Qka+hBh3HFhh7gHxpATUyeTPYmqafgOBRLBPQgvhDqX9gIvOUXyquPc03Qnux13jFja8jxwEg==",
+      "path": "mongodb.entityframeworkcore/7.0.0-preview.1",
+      "hashPath": "mongodb.entityframeworkcore.7.0.0-preview.1.nupkg.sha512"
     },
-    "MongoDB.Libmongocrypt/1.8.2": {
+    "MongoDB.Libmongocrypt/1.8.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-z/8JCULSHM1+mzkau0ivIkU9kIn8JEFFSkmYTSaMaWMMHt96JjUtMKuXxeGNGSnHZ5290ZPKIlQfjoWFk2sKog==",
-      "path": "mongodb.libmongocrypt/1.8.2",
-      "hashPath": "mongodb.libmongocrypt.1.8.2.nupkg.sha512"
+      "sha512": "sha512-fgNw8Dxpkq7mpoaAYes8cfnPRzvFIoB8oL9GPXwi3op/rONftl0WAeg4akRLcxfoVuUvuUO2wGoVBr3JzJ7Svw==",
+      "path": "mongodb.libmongocrypt/1.8.0",
+      "hashPath": "mongodb.libmongocrypt.1.8.0.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",
@@ -2910,12 +2907,12 @@
       "path": "system.valuetuple/4.5.0",
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
     },
-    "ZstdSharp.Port/0.7.3": {
+    "ZstdSharp.Port/0.6.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
-      "path": "zstdsharp.port/0.7.3",
-      "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
+      "sha512": "sha512-jPao/LdUNLUz8rn3H1D8W7wQbZsRZM0iayvWI4xGejJg3XJHT56gcmYdgmCGPdJF1UEBqUjucCRrFB+4HbJsbw==",
+      "path": "zstdsharp.port/0.6.2",
+      "hashPath": "zstdsharp.port.0.6.2.nupkg.sha512"
     },
     "WebHostExtensions/1.0.0": {
       "type": "project",

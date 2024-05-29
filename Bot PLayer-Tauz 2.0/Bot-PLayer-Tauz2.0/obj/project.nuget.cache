@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "C3NH3t4krKR3DaJ/b4SU6LA1KXXa6j4pGdfO0jza30G+49Yw8rmeBHq4bP7PY4wlceVzJleSpwu9gDGOjX0oRg==",
+  "dgSpecHash": "uaxorXunpY0=",
   "success": true,
   "projectFilePath": "E:\\estudo C#\\Bot PlayerTauz-Repository 3.0\\DISCORD-BOT\\Bot PLayer-Tauz 2.0\\Bot-PLayer-Tauz2.0\\Bot PLayer-Tauz 2.0.csproj",
   "expectedPackageFiles": [
@@ -30,12 +30,12 @@
     "C:\\Users\\joaoG\\.nuget\\packages\\google.apis.youtube.v3\\1.68.0.3421\\google.apis.youtube.v3.1.68.0.3421.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.dependencyvalidation.analyzers\\0.11.0\\microsoft.dependencyvalidation.analyzers.0.11.0.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.4\\microsoft.entityframeworkcore.8.0.4.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.4\\microsoft.entityframeworkcore.abstractions.8.0.4.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.4\\microsoft.entityframeworkcore.analyzers.8.0.4.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.extensions.caching.stackexchangeredis\\8.0.5\\microsoft.extensions.caching.stackexchangeredis.8.0.5.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.extensions.caching.stackexchangeredis\\8.0.6\\microsoft.extensions.caching.stackexchangeredis.8.0.6.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.1\\microsoft.extensions.configuration.binder.8.0.1.nupkg.sha512",
@@ -69,11 +69,11 @@
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.20.1\\microsoft.visualstudio.azure.containers.tools.targets.1.20.1.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.bson\\2.25.0\\mongodb.bson.2.25.0.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.driver\\2.25.0\\mongodb.driver.2.25.0.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.driver.core\\2.25.0\\mongodb.driver.core.2.25.0.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.entityframeworkcore\\8.0.1\\mongodb.entityframeworkcore.8.0.1.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.libmongocrypt\\1.8.2\\mongodb.libmongocrypt.1.8.2.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.bson\\2.22.0\\mongodb.bson.2.22.0.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.driver\\2.22.0\\mongodb.driver.2.22.0.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.driver.core\\2.22.0\\mongodb.driver.core.2.22.0.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.entityframeworkcore\\7.0.0-preview.1\\mongodb.entityframeworkcore.7.0.0-preview.1.nupkg.sha512",
+    "C:\\Users\\joaoG\\.nuget\\packages\\mongodb.libmongocrypt\\1.8.0\\mongodb.libmongocrypt.1.8.0.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\nuget.common\\6.9.1\\nuget.common.6.9.1.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\nuget.configuration\\6.9.1\\nuget.configuration.6.9.1.nupkg.sha512",
@@ -168,7 +168,7 @@
     "C:\\Users\\joaoG\\.nuget\\packages\\system.threading.threadpool\\4.3.0\\system.threading.threadpool.4.3.0.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\joaoG\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
-    "C:\\Users\\joaoG\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
+    "C:\\Users\\joaoG\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512"
   ],
   "logs": []
 }

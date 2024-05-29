@@ -1,0 +1,26 @@
+name: dockercompose15919030067351287631
+services:
+  botplayer-tauz2.0:
+    container_name: bot-container-1
+    depends_on:
+      redis:
+        condition: service_started
+        required: true
+    image: jaofreire/bot-playertauz-image:v1
+    networks:
+      net-bot: null
+  redis:
+    container_name: redis-container
+    image: redis:latest
+    networks:
+      net-bot: null
+    ports:
+      - mode: ingress
+        target: 6379
+        published: "2010"
+        protocol: tcp
+    restart: always
+networks:
+  net-bot:
+    name: dockercompose15919030067351287631_net-bot
+    driver: bridge

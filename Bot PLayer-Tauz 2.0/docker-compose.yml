@@ -4,43 +4,30 @@ services:
 
   botplayer-tauz2.0:
     container_name: bot-container-1
-    image: jaofreire/bot-playertauz-image:latest
+    image: jaofreire/bot-playertauz-image:v1
     # build:
     #   context: .
     #   dockerfile: Bot-PLayer-Tauz2.0/Dockerfile
-    environment:
-     - REDIS_CONNECTION_STRINGS=redis-container
-     - LAVA_LINK_HOST_NAME=${LAVA_LINK_HOST_NAME_PROD}
-     - LAVA_LINK_PORT=${LAVA_LINK_PORT_PROD}
-     - LAVA_LINK_PASSWORD=${LAVA_LINK_PASSWORD_PROD}
+    # environment:
+    #  - REDIS_CONNECTION_STRINGS=redis-container
+    #  - LAVA_LINK_HOST_NAME=${LAVA_LINK_HOST_NAME_PROD}
+    #  - LAVA_LINK_PORT=${LAVA_LINK_PORT_PROD}
+    #  - LAVA_LINK_PASSWORD=${LAVA_LINK_PASSWORD_PROD}
 
-     - LAVA_LINK_HOST_NAME2=${LAVA_LINK_HOST_NAME2_PROD}
-     - LAVA_LINK_PORT2=${LAVA_LINK_PORT2_PROD}
-     - LAVA_LINK_PASSWORD2=${LAVA_LINK_PASSWORD2_PROD}
+    #  - LAVA_LINK_HOST_NAME2=${LAVA_LINK_HOST_NAME2_PROD}
+    #  - LAVA_LINK_PORT2=${LAVA_LINK_PORT2_PROD}
+    #  - LAVA_LINK_PASSWORD2=${LAVA_LINK_PASSWORD2_PROD}
     depends_on:
-     - mongo
      - redis
     networks:
      - net-bot
-
-  mongo:
-   container_name: mongo-container
-   image: mongo:latest
-   restart: always
-   ports:
-    - 27017:27017
-   environment:
-    - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-    - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-   networks:
-    - net-bot
   
   redis:
    container_name: redis-container
    image: redis:latest
    restart: always
    ports:
-    - 2010:6379
+    - ${REDIS_PORT}:6379
    networks:
     - net-bot
 
